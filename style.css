@@ -190,39 +190,63 @@ a { color: inherit; text-decoration: none; }
 /* ============================================
    Metrics strip
    ============================================ */
+.metrics-section {
+  margin-bottom: 100px;
+}
+
+.metrics-kicker {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+
 .metrics {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 100px;
 }
 
 .metric {
   background: var(--surface);
-  padding: 24px 20px;
+  padding: 26px 22px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  position: relative;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.metric:nth-child(odd) { border-left-color: var(--teal); }
+.metric:nth-child(even) { border-left-color: var(--amber); }
+
+.metric:hover {
+  background: #FBFDFC;
 }
 
 .metric-num {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 500;
   color: var(--teal-dark);
+  letter-spacing: -0.02em;
 }
 
 .metric-label {
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   color: var(--ink-soft);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 @media (max-width: 720px) {
   .metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .metrics { grid-template-columns: 1fr; }
 }
 
 /* ============================================
@@ -314,15 +338,67 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 }
 
 /* ============================================
-   Projects placeholder
+   Section note (used under Experience eyebrow)
    ============================================ */
+.section-note {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: -8px 0 24px;
+}
+
+/* ============================================
+   Projects
+   ============================================ */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 30px 32px;
+  margin-bottom: 20px;
+}
+
+.project-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.project-head h3 { margin: 0; font-size: 1.1rem; }
+
+.project-summary {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0 0 14px;
+}
+
+.project-card ul {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  color: var(--ink-soft);
+}
+
+.project-card li { margin-bottom: 6px; font-size: 0.95rem; }
+
+.project-caveat {
+  font-size: 0.76rem;
+  color: var(--teal-dark);
+  background: var(--amber-soft);
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin: 0;
+}
+
 .project-placeholder {
   border: 1px dashed var(--line);
   border-radius: 12px;
-  padding: 36px;
+  padding: 30px;
   color: var(--ink-soft);
-  font-size: 0.95rem;
-  background: var(--surface);
+  font-size: 0.92rem;
+  background: transparent;
 }
 
 /* ============================================
