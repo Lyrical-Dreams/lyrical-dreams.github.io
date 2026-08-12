@@ -72,6 +72,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .topbar-inner {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,7 +88,7 @@ a { color: inherit; text-decoration: none; }
 
 .brand-dot { color: var(--teal); }
 
-.nav { display: flex; gap: 28px; }
+.nav { display: flex; align-items: center; gap: 28px; }
 
 .nav a {
   font-size: 0.92rem;
@@ -97,6 +98,50 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav a:hover, .nav a:focus-visible { color: var(--teal-dark); }
+
+.nav a.nav-active { color: var(--teal-dark); font-weight: 600; }
+
+.nav-github {
+  display: flex;
+  align-items: center;
+  color: var(--ink-soft);
+}
+.nav-github:hover { color: var(--teal-dark); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: flex; }
+  .nav {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px 28px 20px;
+    display: none;
+  }
+  .nav.nav-open { display: flex; }
+  .nav a { padding: 10px 0; width: 100%; }
+}
 
 /* ============================================
    Hero
@@ -445,4 +490,155 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
   font-size: 0.8rem;
+}
+
+/* ============================================
+   Inner-page hero (About / Experience / Projects / etc.)
+   ============================================ */
+.page-hero {
+  padding: 64px 28px 40px;
+}
+
+.page-title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.page-subtitle {
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  max-width: 560px;
+  margin: 0;
+}
+
+/* ============================================
+   Certifications / badges
+   ============================================ */
+.cert-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.cert-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 180px;
+}
+
+.cert-card-label {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ============================================
+   Resume page
+   ============================================ */
+.resume-embed {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  height: 80vh;
+  min-height: 500px;
+}
+
+.resume-embed embed { width: 100%; height: 100%; }
+
+.resume-fallback {
+  padding: 40px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+/* ============================================
+   Photography grid
+   ============================================ */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.photo-item {
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 5;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.photo-item:hover img { transform: scale(1.04); }
+
+.photo-item figcaption {
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  background: var(--surface);
+}
+
+@media (max-width: 760px) {
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .photo-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   Home: quick-nav cards
+   ============================================ */
+.quick-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0 0 100px;
+}
+
+.quick-nav-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.quick-nav-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.quick-nav-card h3 {
+  font-size: 1rem;
+  margin: 0 0 6px;
+}
+
+.quick-nav-card p {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .quick-nav { grid-template-columns: 1fr; }
 }

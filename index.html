@@ -10,24 +10,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="home">
 
 <div class="scanline" aria-hidden="true"></div>
+<div id="site-header"></div>
 
-<header class="topbar">
-  <div class="wrap topbar-inner">
-    <a href="#top" class="brand">NP<span class="brand-dot">.</span></a>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
+<main>
 
   <!-- HERO -->
   <section class="hero wrap">
@@ -40,7 +28,7 @@
     <p class="hero-desc">I'm a Georgia State grad who likes figuring out how systems actually work, whether that's a security control, a product roadmap, or a dashboard nobody trusts yet. Looking for a full-time role in cybersecurity or product/project management, and open to adjacent roles too. Based in Atlanta.</p>
     <div class="hero-links">
       <a href="mailto:nayanpillai15@gmail.com" class="btn btn-primary">Email me</a>
-      <a href="https://linkedin.com/in/nayan-pillai" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="resume.html" class="btn btn-ghost">View resume</a>
     </div>
   </section>
 
@@ -75,159 +63,40 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section wrap">
-    <p class="eyebrow mono">01. About</p>
-    <div class="about-grid">
-      <p class="about-text">
-        I got my first internship at a Fortune 500 company when I was 17, and I've been chasing that
-        same feeling ever since: dropping into a messy, real-world problem and figuring out what's
-        actually going on underneath it. Since then I've bounced between product management and data
-        analytics roles, usually landing wherever I get to dig through data, talk to the people who
-        rely on it, and come out the other side with something that actually gets used. My background
-        in cybersecurity keeps me thinking about how things break, which turns out to be useful in
-        product work too. I'm looking for a full-time home where I can keep doing that, in security,
-        product, or project management.
-      </p>
-      <div class="about-card">
-        <p class="mono about-card-title">Education</p>
-        <p class="about-card-main">Georgia State University</p>
-        <p class="about-card-sub">B.B.A., Computer Information Systems<br>Cybersecurity &amp; Data Analytics</p>
-        <p class="mono about-card-date">Graduated May 2026 · Atlanta, GA</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section wrap">
-    <p class="eyebrow mono">02. Experience</p>
-    <p class="section-note">Keeping this section high-level on purpose. Happy to go into specifics if you want to talk through it directly.</p>
-
-    <div class="log-entry">
-      <div class="log-date mono">2025</div>
-      <div class="log-body">
-        <h3>Product Management Intern <span class="log-org">· enterprise point-of-sale software</span></h3>
-        <p class="log-stack mono">Jira · Figma · Confluence</p>
-        <ul>
-          <li>Researched how the company's platform could integrate with third-party delivery services, helping shape the onboarding process for new partners.</li>
-          <li>Compared competing POS systems in the market to help leadership decide where to invest next.</li>
-          <li>Mapped out user flows and system diagrams to keep product and design teams aligned.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="log-entry">
-      <div class="log-date mono">2024</div>
-      <div class="log-body">
-        <h3>Data Analytics &amp; Product Development Intern <span class="log-org">· energy sector</span></h3>
-        <p class="log-stack mono">Python · SQL · Power BI · Tableau</p>
-        <ul>
-          <li>Built forecasting models that pulled in outside data sources to improve accuracy.</li>
-          <li>Automated data checks across a large book of business clients, cutting down manual errors.</li>
-          <li>Led a dashboard migration project, working with stakeholders to standardize reporting.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="log-entry">
-      <div class="log-date mono">2026</div>
-      <div class="log-body">
-        <h3>Project Coordinator &amp; Technology Lead <span class="log-org">· consulting practicum, restaurant industry</span></h3>
-        <p class="log-stack mono">Tableau · Power BI</p>
-        <ul>
-          <li>Selected for a competitive consulting engagement to help a franchise operator understand why customer satisfaction was slipping despite strong sales.</li>
-          <li>Combined operational data with AI-assisted analysis to trace service issues back to their root causes.</li>
-          <li>Presented findings and a prioritized action plan to leadership, who greenlit a pilot based on it.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="log-entry">
-      <div class="log-date mono">2024</div>
-      <div class="log-body">
-        <h3>Program Captain <span class="log-org">· fintech leadership program</span></h3>
-        <p class="log-stack mono">stakeholder presentations</p>
-        <ul>
-          <li>Selected from a pool of 400 applicants for a competitive, multi-stage leadership program.</li>
-          <li>Pitched a data-backed proposal to bank executives, covering feasibility and risk.</li>
-          <li>Led a team to 3rd place in a national case competition.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section wrap">
-    <p class="eyebrow mono">03. Projects</p>
-
-    <div class="project-card">
-      <div class="project-head">
-        <h3>Input-Capture Detection Lab</h3>
-        <p class="log-stack mono">C++ · Windows API · Winsock2</p>
-      </div>
-      <p class="project-summary">
-        A self-directed research project studying how endpoint monitoring tools detect keylogging
-        behavior, built and run entirely in an isolated virtual lab I controlled end to end.
-      </p>
-      <ul>
-        <li>Built a keystroke-capture tool in C++ using low-level Windows API hooks, to understand exactly what signals this class of software leaves behind on a system.</li>
-        <li>Ran the tool exclusively in a sandboxed VM with no network access, generating over 200 hours of controlled test data across a range of input types.</li>
-        <li>Focused the analysis on detection: mapped which behaviors triggered antivirus and EDR alerts, and documented indicators of compromise that defenders could use to flag similar tools.</li>
-        <li>Wrote up findings as a lab report connecting the technical behavior to practical detection guidance, rather than evasion.</li>
-      </ul>
-      <p class="project-caveat mono">Research context only. Built and tested in an isolated environment, never deployed outside the lab.</p>
-    </div>
-
-    <div class="project-placeholder">
-      <p>More projects coming soon. If you've got another build in mind, send it over and I'll add it here in the same format.</p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="section wrap">
-    <p class="eyebrow mono">04. Skills</p>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <p class="mono skill-group-title">Languages</p>
-        <p class="skill-list">Python, Java, JavaScript, HTML/CSS, C++, SQL, Visual Basic</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-group-title">Technical</p>
-        <p class="skill-list">Power BI, Tableau, CI/CD, Agile/Scrum, Roadmap Planning, Microsoft Office Suite</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-group-title">Developer Tools</p>
-        <p class="skill-list">GitHub, Git, Visual Studio, PyCharm, Pandas, Nmap, Wireshark, MySQL, DBeaver</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-group-title">Certifications</p>
-        <p class="skill-list">AWS Cloud Security Foundations · Pursuing Security+ (SY0-701), Network+ (N10-009)</p>
-      </div>
-      <div class="skill-group">
-        <p class="mono skill-group-title">Organizations</p>
-        <p class="skill-list">Delta Sigma Pi (Webmaster), Association for Information Systems, Cybersecurity Club</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section wrap contact-section">
-    <p class="eyebrow mono">05. Contact</p>
-    <h2 class="contact-heading">Let's talk about a role, a project, or a data problem worth solving.</h2>
-    <div class="hero-links">
-      <a href="mailto:nayanpillai15@gmail.com" class="btn btn-primary">nayanpillai15@gmail.com</a>
-      <a href="https://linkedin.com/in/nayan-pillai" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
+  <!-- QUICK NAV -->
+  <section class="section wrap" aria-label="Explore the site">
+    <p class="eyebrow mono">// where to next</p>
+    <div class="quick-nav">
+      <a href="about.html" class="quick-nav-card">
+        <h3>About</h3>
+        <p>My story, education, skills, and certifications.</p>
+      </a>
+      <a href="experience.html" class="quick-nav-card">
+        <h3>Experience</h3>
+        <p>Internships across product, data, and consulting.</p>
+      </a>
+      <a href="projects.html" class="quick-nav-card">
+        <h3>Projects</h3>
+        <p>Security research and technical builds.</p>
+      </a>
+      <a href="photography.html" class="quick-nav-card">
+        <h3>Photography</h3>
+        <p>A more personal side of things.</p>
+      </a>
+      <a href="resume.html" class="quick-nav-card">
+        <h3>Resume</h3>
+        <p>View or download the full PDF.</p>
+      </a>
+      <a href="contact.html" class="quick-nav-card">
+        <h3>Contact</h3>
+        <p>Get in touch about a role or a project.</p>
+      </a>
     </div>
   </section>
 
 </main>
 
-<footer class="footer wrap">
-  <p class="mono">Nayan Pillai · Atlanta, GA · <span id="year"></span></p>
-</footer>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
 </body>
 </html>
