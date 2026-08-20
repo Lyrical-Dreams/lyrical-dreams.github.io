@@ -4,13 +4,17 @@
 
 function initMatrixRain(canvas) {
   const ctx = canvas.getContext('2d');
-  // Mixed character set: digits, English letters, Malayalam, and Devanagari —
-  // a nod to multiple languages instead of the usual katakana rain.
+  // Mixed character set spanning several languages/scripts instead of the
+  // usual katakana-only rain: English, Japanese, Malayalam, French/Spanish
+  // accents, Russian, and Arabic.
   const chars = (
     '0123456789' +
     'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+    'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン' +
     'അആഇഈഉഊഋഎഏഐഒഓഔകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹളഴറ' +
-    'अआइईउऊएऐओऔकखगघचछजझटठडढणतथदधनपफबभमयरलवशषसह'
+    'ÀÂÄÉÈÊËÎÏÔÙÛÜÇÑáéíóúñ¿¡' +
+    'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ' +
+    'ابتثجحخدذرزسشصضطظعغفقكلمنهوي'
   ).split('');
 
   // Most hidden messages spell out gold; a rare, deliberately soft one
@@ -35,7 +39,7 @@ function initMatrixRain(canvas) {
   function draw() {
     ctx.fillStyle = 'rgba(10, 21, 18, 0.18)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = fontSize + "px 'Noto Sans Malayalam', 'Noto Sans Devanagari', monospace";
+    ctx.font = fontSize + "px 'Noto Sans Malayalam', 'Noto Sans JP', 'Noto Sans Arabic', monospace";
 
     for (let i = 0; i < drops.length; i++) {
       if (active[i]) {
