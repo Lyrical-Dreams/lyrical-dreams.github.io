@@ -411,18 +411,22 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 .about-text { color: var(--ink-soft); font-size: 1.02rem; }
 
 .about-card {
-  background: var(--surface);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--teal) 10%, var(--surface)), var(--surface));
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 22px;
+  border-left: 4px solid var(--teal);
+  border-radius: 10px;
+  padding: 26px 28px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
 
-.about-card-title { font-size: 0.75rem; color: var(--teal-dark); margin: 0 0 6px; }
-.about-card-main { font-weight: 600; font-size: 1.05rem; margin: 0; }
+.about-card-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+.about-card-title { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); margin: 0 0 6px; }
+.about-card-main { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0; }
 .about-card-sub { color: var(--ink-soft); font-size: 0.92rem; margin: 4px 0 0; }
 .about-card-date { font-size: 0.78rem; color: var(--ink-soft); margin-left: auto; }
 
@@ -738,46 +742,66 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 /* ============================================
    Photography carousel
    ============================================ */
-.photo-category { margin-bottom: 48px; }
+.photo-category { margin-bottom: 56px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .photo-carousel {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .photo-carousel-viewport {
   flex: 1;
   min-width: 0;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
   overflow: hidden;
+  position: relative;
+}
+
+.photo-track {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.35, 1);
+  will-change: transform;
 }
 
 .photo-item {
-  display: none;
+  flex: 0 0 78%;
   margin: 0;
-  flex-direction: row;
-  align-items: stretch;
+  height: 440px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  opacity: 0.32;
+  filter: blur(3px);
+  transform: scale(0.94);
+  transition: opacity 0.45s ease, filter 0.45s ease, transform 0.45s ease;
+  cursor: pointer;
 }
-.photo-item.active { display: flex; }
+
+.photo-item.is-active {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
+  cursor: default;
+}
 
 .photo-item img {
-  width: 60%;
-  max-height: 460px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
-  flex-shrink: 0;
-}
-
-.photo-item figcaption {
-  flex: 1;
-  padding: 20px 22px;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  display: flex;
-  align-items: center;
+  background: var(--bg);
 }
 
 .carousel-btn {
@@ -795,17 +819,29 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 }
 .carousel-btn:hover { border-color: var(--teal); color: var(--teal); }
 
+.carousel-caption {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin: 14px 0 4px;
+  min-height: 1.4em;
+}
+
 .carousel-counter {
   text-align: center;
   font-size: 0.78rem;
   color: var(--ink-soft);
-  margin: 10px 0 0;
+  margin: 0;
 }
 
 @media (max-width: 640px) {
-  .photo-item { flex-direction: column; }
-  .photo-item img { width: 100%; max-height: 320px; }
+  .photo-item { flex-basis: 84%; height: 320px; }
   .carousel-btn { width: 34px; height: 34px; font-size: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-track { transition: none; }
+  .photo-item { transition: none; }
 }
 
 /* ============================================
@@ -1067,6 +1103,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 .log-org-note { color: var(--ink-soft); font-weight: 400; font-size: 0.85em; }
 
 .timeline-date { font-size: 0.78rem; margin-bottom: 10px; color: var(--ink-soft); }
+.location-pin { color: var(--ink-soft); opacity: 0.85; margin-left: 4px; }
 .timeline-card h3 { font-size: 1rem; margin: 0 0 2px; }
 .timeline-card p.log-org { font-size: 0.85rem; margin: 0; }
 .timeline-card p.log-stack { margin-bottom: 10px; }
