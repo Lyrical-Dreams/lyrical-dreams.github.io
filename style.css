@@ -19,6 +19,8 @@
   --coral-soft:  #3A2028;
   --sky:         #5EB4EC;
   --sky-soft:    #1B2E3D;
+  --deep-blue:   #3B5BDB;
+  --brand-red:   #E8503A;
 
   /* dark hero / matrix-rain panel (now same as base — kept as aliases) */
   --dark-bg:      var(--bg);
@@ -257,6 +259,79 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.78rem;
   color: var(--ink-soft);
   margin: 0 0 14px;
+}
+
+/* ============================================
+   Explore timeline (Home page sneak-peek nav)
+   ============================================ */
+.explore-section { margin-bottom: 100px; }
+
+.explore-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 44px;
+}
+
+.explore-timeline::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--teal), var(--violet), var(--coral), var(--sky), var(--amber), var(--teal));
+  opacity: 0.35;
+}
+
+.explore-stop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.explore-stop.explore-visible { opacity: 1; transform: translateY(0); }
+
+.explore-stop:hover {
+  border-color: var(--line);
+  background: var(--surface);
+}
+
+.explore-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+}
+.explore-stop:hover .explore-icon { color: var(--teal); border-color: var(--teal); }
+
+.explore-icon-emoji { font-size: 1.5rem; }
+
+.explore-title { display: block; font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
+.explore-sub { display: block; font-size: 0.85rem; color: var(--ink-soft); margin-top: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .explore-stop { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 560px) {
+  .explore-timeline { padding-left: 32px; }
+  .explore-timeline::before { left: 15px; }
+  .explore-icon { width: 40px; height: 40px; }
 }
 
 .metrics {
@@ -829,8 +904,8 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   color: var(--ink-soft);
   margin: 0 0 4px;
 }
-.timeline-col-left .timeline-heading { color: var(--teal-dark); }
-.timeline-col-right .timeline-heading { color: var(--violet); }
+.timeline-col-left .timeline-heading { color: var(--brand-red); }
+.timeline-col-right .timeline-heading { color: var(--deep-blue); }
 
 .timeline-card {
   position: relative;
@@ -842,7 +917,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 }
 
 .timeline-col-left .timeline-card { border-right: 3px solid var(--teal); }
-.timeline-col-right .timeline-card { border-left: 3px solid var(--violet); }
+.timeline-col-right .timeline-card { border-left: 3px solid var(--deep-blue); }
 
 .timeline-card::before {
   content: "";
@@ -855,7 +930,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   border: 2px solid var(--teal);
 }
 .timeline-col-left .timeline-card::before { right: -55px; border-color: var(--teal); }
-.timeline-col-right .timeline-card::before { left: -55px; border-color: var(--violet); }
+.timeline-col-right .timeline-card::before { left: -55px; border-color: var(--deep-blue); }
 
 .timeline-card-head {
   display: flex;
@@ -882,7 +957,14 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   object-fit: contain;
 }
 .timeline-col-left .timeline-logo { color: var(--teal); }
-.timeline-col-right .timeline-logo { color: var(--violet); }
+.timeline-col-right .timeline-logo { color: var(--deep-blue); }
+.timeline-col-right .timeline-logo { border-color: color-mix(in srgb, var(--deep-blue) 40%, var(--line)); }
+
+.timeline-logo-purple { color: var(--violet); border-color: color-mix(in srgb, var(--violet) 40%, var(--line)); }
+.timeline-logo-blue { color: var(--deep-blue); border-color: color-mix(in srgb, var(--deep-blue) 40%, var(--line)); }
+.timeline-logo-flame { background: var(--surface); }
+
+.log-org-purple { color: var(--violet); font-weight: 600; }
 
 .timeline-date { font-size: 0.78rem; margin-bottom: 10px; color: var(--ink-soft); }
 .timeline-card h3 { font-size: 1rem; margin: 0 0 2px; }
