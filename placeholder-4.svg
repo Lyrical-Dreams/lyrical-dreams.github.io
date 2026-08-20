@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#E9EFEC"/>
+  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#DCE4DF" stroke-width="2"/>
+  <text x="200" y="240" font-family="monospace" font-size="16" fill="#4A5C54" text-anchor="middle">photo-4.jpg</text>
+  <text x="200" y="264" font-family="monospace" font-size="12" fill="#4A5C54" text-anchor="middle">replace this file</text>
+</svg>
