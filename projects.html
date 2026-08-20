@@ -15,16 +15,20 @@
 <div id="site-header"></div>
 
 <main>
-  <section class="page-hero wrap">
-    <p class="eyebrow mono">Projects</p>
-    <h1 class="page-title">Things I've built</h1>
-    <p class="page-subtitle">Mostly security and data work, done outside of class or a job.</p>
+  <section class="matrix-hero matrix-hero-compact">
+    <canvas class="matrix-canvas"></canvas>
+    <div class="matrix-hero-inner">
+      <p class="eyebrow mono">Projects</p>
+      <h1 class="page-title">Things I've built</h1>
+      <p class="page-subtitle">Mostly security and data work, done outside of class or a job. A homelab build is in progress and will land here once it's further along.</p>
+    </div>
   </section>
 
   <section class="section wrap">
-    <div class="project-card">
+    <div class="project-card project-card-accent-violet">
       <div class="project-head">
         <h3>Input-Capture Detection Lab</h3>
+        <span class="tag tag-violet">security research</span>
         <p class="log-stack mono">C++ · Windows API · Winsock2</p>
       </div>
       <p class="project-summary">
@@ -40,8 +44,20 @@
       <p class="project-caveat mono">Research context only. Built and tested in an isolated environment, never deployed outside the lab.</p>
     </div>
 
+    <div class="project-card project-card-accent-sky project-card-teaser">
+      <div class="project-head">
+        <h3>Homelab</h3>
+        <span class="tag tag-sky">in progress</span>
+      </div>
+      <p class="project-summary">
+        Currently planning and building out a homelab, self-hosted services, a bit of network
+        segmentation, probably more monitoring than is strictly necessary. Full writeup coming once
+        there's something worth showing.
+      </p>
+    </div>
+
     <div class="project-placeholder">
-      <p>More projects coming soon. Send over the next build and I'll add it here in the same format.</p>
+      <p>More projects to come. Send over the next build and I'll add it here in the same format.</p>
     </div>
   </section>
 </main>

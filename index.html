@@ -18,17 +18,31 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero wrap">
-    <div class="status-line">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span class="mono">seeking full-time roles, spring 2026</span>
-    </div>
-    <h1 class="hero-name">Nayan Pillai</h1>
-    <p class="hero-role">Cybersecurity, Product &amp; Project Management</p>
-    <p class="hero-desc">I'm a Georgia State grad who likes figuring out how systems actually work, whether that's a security control, a product roadmap, or a dashboard nobody trusts yet. Looking for a full-time role in cybersecurity or product/project management, and open to adjacent roles too. Based in Atlanta.</p>
-    <div class="hero-links">
-      <a href="mailto:nayanpillai15@gmail.com" class="btn btn-primary">Email me</a>
-      <a href="resume.html" class="btn btn-ghost">View resume</a>
+  <section class="matrix-hero">
+    <canvas class="matrix-canvas"></canvas>
+    <div class="matrix-hero-inner">
+      <div class="status-line">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="mono">seeking full-time roles, spring 2026</span>
+      </div>
+      <h1 class="hero-name">Nayan Pillai</h1>
+      <p class="hero-role">Cybersecurity, Product &amp; Project Management</p>
+      <p class="hero-desc">I'm a Georgia State grad who likes figuring out how systems actually work, whether that's a security control, a product roadmap, or a dashboard nobody trusts yet. Looking for a full-time role in cybersecurity or product/project management, and open to adjacent roles too. Based in Atlanta.</p>
+      <div class="socials-row" aria-label="Social links">
+        <a href="mailto:nayanpillai15@gmail.com" class="social-icon" aria-label="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/nayan-pillai" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.1 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V23h-4V8Zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.66 1.8-2.66 3.65V23h-4V8Z"/></svg>
+        </a>
+        <a href="https://github.com/your-github-username" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.75 5.48.75 11.75c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55v-2.1c-3.16.69-3.83-1.36-3.83-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.16a10.9 10.9 0 0 1 5.72 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.66 5.31-5.19 5.59.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.26 11.26 0 0 0 23.25 11.75C23.25 5.48 18.27.5 12 .5Z"/></svg>
+        </a>
+      </div>
+      <div class="hero-links" style="margin-top: 26px;">
+        <a href="mailto:nayanpillai15@gmail.com" class="btn btn-primary">Email me</a>
+        <a href="resume.html" class="btn btn-ghost">View resume</a>
+      </div>
     </div>
   </section>
 
@@ -63,40 +77,10 @@
     </div>
   </section>
 
-  <!-- QUICK NAV -->
-  <section class="section wrap" aria-label="Explore the site">
-    <p class="eyebrow mono">// where to next</p>
-    <div class="quick-nav">
-      <a href="about.html" class="quick-nav-card">
-        <h3>About</h3>
-        <p>My story, education, skills, and certifications.</p>
-      </a>
-      <a href="experience.html" class="quick-nav-card">
-        <h3>Experience</h3>
-        <p>Internships across product, data, and consulting.</p>
-      </a>
-      <a href="projects.html" class="quick-nav-card">
-        <h3>Projects</h3>
-        <p>Security research and technical builds.</p>
-      </a>
-      <a href="photography.html" class="quick-nav-card">
-        <h3>Photography</h3>
-        <p>A more personal side of things.</p>
-      </a>
-      <a href="resume.html" class="quick-nav-card">
-        <h3>Resume</h3>
-        <p>View or download the full PDF.</p>
-      </a>
-      <a href="contact.html" class="quick-nav-card">
-        <h3>Contact</h3>
-        <p>Get in touch about a role or a project.</p>
-      </a>
-    </div>
-  </section>
-
 </main>
 
 <div id="site-footer"></div>
 <script src="js/site.js"></script>
+<script src="js/matrix.js"></script>
 </body>
 </html>

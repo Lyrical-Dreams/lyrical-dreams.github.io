@@ -18,44 +18,68 @@
   <section class="page-hero wrap">
     <p class="eyebrow mono">Photography</p>
     <h1 class="page-title">Off the clock</h1>
-    <p class="page-subtitle">A more personal side of things. Swap these out for your own shots any time — see the instructions in the page source.</p>
+    <p class="page-subtitle">A more personal side of things, sorted into a few categories. See the note in the page source for how to swap these placeholders for your own shots.</p>
   </section>
 
   <section class="section wrap">
     <!--
-      HOW TO ADD YOUR OWN PHOTOS:
-      1. Drop your image files into images/photography/ (e.g. sunset.jpg)
-      2. Copy one <figure> block below and change the src and figcaption
-      3. Delete the placeholder-N.svg files once you have real photos in
-      Keep file sizes reasonable (under ~1-2MB each, resized to roughly 1600px
-      wide) so the page stays fast to load on GitHub Pages.
+      HOW TO ADD YOUR OWN PHOTOS
+      ===========================
+      1. Drop your image files into images/photography/ — organize into subfolders
+         if you like, e.g. images/photography/nature/sunset.jpg
+      2. Each photo is one <figure class="photo-item"> block. Copy one, point the
+         src at your file, and write a real caption.
+      3. To add a whole new category, copy an entire <div class="photo-category">
+         block (title + grid) and rename the heading.
+      4. Delete the placeholder-N.svg files once every placeholder below has been
+         swapped for a real photo.
+      Keep files reasonably sized (under ~1-2MB, resized to roughly 1600px wide)
+      so the page stays fast to load on GitHub Pages.
     -->
-    <div class="photo-grid">
-      <figure class="photo-item">
-        <img src="images/photography/placeholder-1.svg" alt="Replace with your photo" loading="lazy">
-        <figcaption>Caption goes here</figcaption>
-      </figure>
-      <figure class="photo-item">
-        <img src="images/photography/placeholder-2.svg" alt="Replace with your photo" loading="lazy">
-        <figcaption>Caption goes here</figcaption>
-      </figure>
-      <figure class="photo-item">
-        <img src="images/photography/placeholder-3.svg" alt="Replace with your photo" loading="lazy">
-        <figcaption>Caption goes here</figcaption>
-      </figure>
-      <figure class="photo-item">
-        <img src="images/photography/placeholder-4.svg" alt="Replace with your photo" loading="lazy">
-        <figcaption>Caption goes here</figcaption>
-      </figure>
-      <figure class="photo-item">
-        <img src="images/photography/placeholder-5.svg" alt="Replace with your photo" loading="lazy">
-        <figcaption>Caption goes here</figcaption>
-      </figure>
-      <figure class="photo-item">
-        <img src="images/photography/placeholder-6.svg" alt="Replace with your photo" loading="lazy">
-        <figcaption>Caption goes here</figcaption>
-      </figure>
+
+    <div class="photo-category">
+      <h2 class="photo-category-title">Nature <span class="mono">// landscapes, wildlife, plants</span></h2>
+      <div class="photo-grid">
+        <figure class="photo-item">
+          <img src="images/photography/placeholder-1.svg" alt="Replace with your photo" loading="lazy">
+          <figcaption>Caption goes here</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <img src="images/photography/placeholder-2.svg" alt="Replace with your photo" loading="lazy">
+          <figcaption>Caption goes here</figcaption>
+        </figure>
+      </div>
     </div>
+
+    <div class="photo-category">
+      <h2 class="photo-category-title">Cities <span class="mono">// street, architecture, travel</span></h2>
+      <div class="photo-grid">
+        <figure class="photo-item">
+          <img src="images/photography/placeholder-3.svg" alt="Replace with your photo" loading="lazy">
+          <figcaption>Caption goes here</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <img src="images/photography/placeholder-4.svg" alt="Replace with your photo" loading="lazy">
+          <figcaption>Caption goes here</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="photo-category">
+      <h2 class="photo-category-title">Pets <span class="mono">// the important stuff</span></h2>
+      <div class="photo-grid">
+        <figure class="photo-item">
+          <img src="images/photography/placeholder-5.svg" alt="Replace with your photo" loading="lazy">
+          <figcaption>Caption goes here</figcaption>
+        </figure>
+        <figure class="photo-item">
+          <img src="images/photography/placeholder-6.svg" alt="Replace with your photo" loading="lazy">
+          <figcaption>Caption goes here</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Add more categories as needed: Food, Events, Friends, Sports, whatever fits your library -->
   </section>
 </main>
 
