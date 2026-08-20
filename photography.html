@@ -18,64 +18,77 @@
   <section class="page-hero wrap">
     <p class="eyebrow mono">Photography</p>
     <h1 class="page-title">Off the clock</h1>
-    <p class="page-subtitle">A more personal side of things. Click any photo to view it enlarged.</p>
+    <p class="page-subtitle">A more personal side of things. Use the arrows to flip through each category, or click a photo to enlarge it.</p>
   </section>
 
   <section class="section wrap">
     <!--
       HOW TO ADD YOUR OWN PHOTOS
       ===========================
-      1. Drop your image files into images/photography/, e.g.
-         images/photography/nature/sunset.jpg
-      2. Each photo is one <figure class="photo-item"> block below. Copy one,
-         point the src at your file, write a real caption.
-      3. To add a new category, copy a whole <div class="photo-category"> block
-         and rename the heading.
-      4. Delete the placeholder-N.svg files once every placeholder has been
-         swapped for a real photo — see the chat for a note on compressing
-         iPhone photos before uploading them.
+      1. Drop your image files into images/photography/.
+      2. Each photo is one <figure class="photo-item"> block inside a
+         .photo-carousel. Copy one, point the src at your file, write a
+         real caption. The carousel and lightbox both pick up new figures
+         automatically — no JS changes needed.
+      3. To add a new category, copy a whole <div class="photo-category">
+         block, give it a unique data-category value, and rename the heading.
     -->
 
-    <div class="photo-category">
+    <div class="photo-category" data-category="nature">
       <h2 class="photo-category-title">Nature <span class="mono">// landscapes, wildlife, plants</span></h2>
-      <div class="photo-grid">
-        <figure class="photo-item">
-          <img src="images/photography/palm-trees.jpg" alt="Palm Trees in Seaside" loading="lazy">
-          <figcaption>Seaside 30A</figcaption>
-        </figure>
-        <figure class="photo-item">
-          <img src="images/photography/Kerala.jpg" alt="Vande Bharat" loading="lazy">
-          <figcaption>Kerala, India</figcaption>
-        </figure>
+      <div class="photo-carousel">
+        <button class="carousel-btn carousel-prev" aria-label="Previous photo">&#8249;</button>
+        <div class="photo-carousel-viewport">
+          <figure class="photo-item">
+            <img src="images/photography/palm-trees.jpg" alt="Palm Trees in Seaside" loading="lazy">
+            <figcaption>Seaside 30A</figcaption>
+          </figure>
+          <figure class="photo-item">
+            <img src="images/photography/kerala.jpg" alt="Vande Bharat" loading="lazy">
+            <figcaption>Kerala, India</figcaption>
+          </figure>
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Next photo">&#8250;</button>
       </div>
+      <p class="carousel-counter mono">1 / 2</p>
     </div>
 
-    <div class="photo-category">
+    <div class="photo-category" data-category="cities">
       <h2 class="photo-category-title">Cities <span class="mono">// street, architecture, travel</span></h2>
-      <div class="photo-grid">
-        <figure class="photo-item">
-          <img src="images/photography/kinetic-midtown.jpg" alt="Kinetic Midtown" loading="lazy">
-          <figcaption>Downtown Atlanta skyline captured from Midtown</figcaption>
-        </figure>
-        <figure class="photo-item">
-          <img src="images/photography/Downtown.jpg" alt="Westin" loading="lazy">
-          <figcaption>The Sun Dial: Westin</figcaption>
-        </figure>
+      <div class="photo-carousel">
+        <button class="carousel-btn carousel-prev" aria-label="Previous photo">&#8249;</button>
+        <div class="photo-carousel-viewport">
+          <figure class="photo-item">
+            <img src="images/photography/kinetic-midtown.jpg" alt="Kinetic Midtown" loading="lazy">
+            <figcaption>Downtown Atlanta skyline captured from Midtown</figcaption>
+          </figure>
+          <figure class="photo-item">
+            <img src="images/photography/downtown.jpg" alt="Westin" loading="lazy">
+            <figcaption>The Sun Dial: Westin</figcaption>
+          </figure>
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Next photo">&#8250;</button>
       </div>
+      <p class="carousel-counter mono">1 / 2</p>
     </div>
 
-    <div class="photo-category">
+    <div class="photo-category" data-category="pets">
       <h2 class="photo-category-title">Pets <span class="mono">// the important stuff</span></h2>
-      <div class="photo-grid">
-        <figure class="photo-item">
-          <img src="images/photography/Sulley1.jpg" alt="Sulley" loading="lazy">
-          <figcaption>Sulley (From Monsters Inc.)</figcaption>
-        </figure>
-        <figure class="photo-item">
-          <img src="images/photography/Sulley2.jpg" alt="Snowy Sulley" loading="lazy">
-          <figcaption>Snowy Sulley</figcaption>
-        </figure>
+      <div class="photo-carousel">
+        <button class="carousel-btn carousel-prev" aria-label="Previous photo">&#8249;</button>
+        <div class="photo-carousel-viewport">
+          <figure class="photo-item">
+            <img src="images/photography/Sulley1.jpg" alt="Sulley" loading="lazy">
+            <figcaption>Sulley (From Monsters Inc.)</figcaption>
+          </figure>
+          <figure class="photo-item">
+            <img src="images/photography/Sulley2.jpg" alt="Snowy Sulley" loading="lazy">
+            <figcaption>Snowy Sulley</figcaption>
+          </figure>
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Next photo">&#8250;</button>
       </div>
+      <p class="carousel-counter mono">1 / 2</p>
     </div>
 
     <!-- Add more categories as needed: Food, Events, Friends, Sports, whatever fits your library -->
@@ -84,6 +97,7 @@
 
 <div id="site-footer"></div>
 <script src="js/site.js"></script>
+<script src="js/carousel.js"></script>
 <script src="js/lightbox.js"></script>
 </body>
 </html>

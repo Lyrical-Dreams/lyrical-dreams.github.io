@@ -18,26 +18,46 @@
   <section class="page-hero wrap">
     <p class="eyebrow mono">Resume</p>
     <h1 class="page-title">The full picture</h1>
-    <p class="page-subtitle">View it inline below, or grab the PDF directly.</p>
-    <div class="hero-links" style="margin-top: 20px;">
-      <a href="assets/Nayan_Pillai_Resume.pdf" download class="btn btn-primary">Download PDF</a>
-      <a href="assets/Nayan_Pillai_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Open in new tab ↗</a>
-    </div>
+    <p class="page-subtitle">This one's locked — enter the password below to view or download it.</p>
   </section>
 
   <section class="section wrap">
-    <div class="resume-embed">
-      <embed src="assets/Nayan_Pillai_Resume.pdf" type="application/pdf" />
-      <noscript>
-        <div class="resume-fallback">
-          <p>Your browser can't preview PDFs inline here. Use the download link above instead.</p>
+    <div class="resume-gated" id="resumeGated">
+
+      <div class="resume-lock-overlay" id="resumeLockOverlay">
+        <div class="resume-lock-box">
+          <span class="resume-lock-icon" aria-hidden="true">🔒</span>
+          <p class="resume-lock-title">This resume is password protected</p>
+          <p class="resume-lock-sub">Ask me for the password, or you likely already have it.</p>
+          <form id="resumeLockForm" class="resume-lock-form">
+            <input type="password" id="resumeLockInput" placeholder="Password" autocomplete="off">
+            <button type="submit" class="btn btn-primary">Unlock</button>
+          </form>
+          <p class="resume-lock-error mono" id="resumeLockError"></p>
         </div>
-      </noscript>
+      </div>
+
+      <div class="resume-lock-content" id="resumeLockContent">
+        <div class="hero-links" style="margin: 0 0 24px;">
+          <a href="assets/Nayan_Pillai_Resume.pdf" download class="btn btn-primary">Download PDF</a>
+          <a href="assets/Nayan_Pillai_Resume.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Open in new tab ↗</a>
+        </div>
+        <div class="resume-embed">
+          <embed src="assets/Nayan_Pillai_Resume.pdf" type="application/pdf" />
+          <noscript>
+            <div class="resume-fallback">
+              <p>Your browser can't preview PDFs inline here. Use the download link above instead.</p>
+            </div>
+          </noscript>
+        </div>
+      </div>
+
     </div>
   </section>
 </main>
 
 <div id="site-footer"></div>
 <script src="js/site.js"></script>
+<script src="js/resume-lock.js"></script>
 </body>
 </html>
