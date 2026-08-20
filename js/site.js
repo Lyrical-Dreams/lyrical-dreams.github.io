@@ -37,6 +37,20 @@ async function initSite() {
   // Footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Fade in the "explore" timeline stops as they scroll into view (Home page)
+  const revealEls = document.querySelectorAll('.explore-reveal');
+  if (revealEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('explore-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    revealEls.forEach((el) => observer.observe(el));
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initSite);
