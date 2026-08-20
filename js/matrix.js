@@ -4,7 +4,13 @@
 
 function initMatrixRain(canvas) {
   const ctx = canvas.getContext('2d');
-  const chars = '01アイウエオカキクケコサシスセソタチツテト'.split('');
+  // Mixed character set: binary, English letters, and Malayalam script —
+  // a nod to both languages instead of the usual katakana rain.
+  const chars = (
+    '01' +
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+    'അആഇഈഉഊഋഎഏഐഒഓഔകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹളഴറ'
+  ).split('');
   let columns, drops, fontSize = 15;
 
   function resize() {
@@ -19,7 +25,7 @@ function initMatrixRain(canvas) {
     ctx.fillStyle = 'rgba(10, 21, 18, 0.18)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#35E28E';
-    ctx.font = fontSize + 'px monospace';
+    ctx.font = fontSize + "px 'Noto Sans Malayalam', monospace";
 
     for (let i = 0; i < drops.length; i++) {
       const text = chars[Math.floor(Math.random() * chars.length)];
