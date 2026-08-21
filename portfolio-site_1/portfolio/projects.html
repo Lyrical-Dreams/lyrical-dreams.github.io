@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects · Nayan Pillai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Malayalam:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="projects">
+
+<div class="scanline" aria-hidden="true"></div>
+<div id="site-header"></div>
+
+<main>
+  <section class="matrix-hero matrix-hero-compact">
+    <canvas class="matrix-canvas"></canvas>
+    <div class="matrix-hero-inner">
+      <p class="eyebrow mono">Projects</p>
+      <h1 class="page-title">Things I've built</h1>
+      <p class="page-subtitle">Mostly security and data work, done outside of class or a job. A homelab build is in progress and will land here once it's further along.</p>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="project-card project-card-accent-violet">
+      <div class="project-head">
+        <h3>Input-Capture Detection Lab</h3>
+        <span class="tag tag-violet">security research</span>
+        <p class="log-stack mono">C++ · Windows API · Winsock2</p>
+      </div>
+      <p class="project-summary">
+        A self-directed research project studying how endpoint monitoring tools detect keylogging
+        behavior, built and run entirely in an isolated virtual lab I controlled end to end.
+      </p>
+      <ul>
+        <li>Built a keystroke-capture tool in C++ using low-level Windows API hooks, to understand exactly what signals this class of software leaves behind on a system.</li>
+        <li>Ran the tool exclusively in a sandboxed VM with no network access, generating over 200 hours of controlled test data across a range of input types.</li>
+        <li>Focused the analysis on detection: mapped which behaviors triggered antivirus and EDR alerts, and documented indicators of compromise that defenders could use to flag similar tools.</li>
+        <li>Wrote up findings as a lab report connecting the technical behavior to practical detection guidance, rather than evasion.</li>
+      </ul>
+      <p class="project-caveat mono">Research context only. Built and tested in an isolated environment, never deployed outside the lab.</p>
+    </div>
+
+    <div class="project-card project-card-accent-sky project-card-teaser">
+      <div class="project-head">
+        <h3>Homelab</h3>
+        <span class="tag tag-sky">in progress</span>
+      </div>
+      <p class="project-summary">
+        Currently planning and building out a homelab, self-hosted services, a bit of network
+        segmentation, probably more monitoring than is strictly necessary. Full writeup coming once
+        there's something worth showing.
+      </p>
+    </div>
+
+    <div class="project-placeholder">
+      <p>More projects to come. Send over the next build and I'll add it here in the same format.</p>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+</body>
+</html>
