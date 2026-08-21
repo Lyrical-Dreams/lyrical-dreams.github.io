@@ -12,7 +12,7 @@ function initTimelineMarkers() {
 
   const markers = cards.map((card) => {
     const marker = document.createElement('div');
-    marker.className = 'timeline-marker ' + (card.closest('.timeline-col-left') ? 'marker-left' : 'marker-right');
+    marker.className = 'timeline-marker ' + (card.closest('.timeline-row-left') ? 'marker-left' : 'marker-right');
     marker.textContent = card.dataset.year;
     timeline.appendChild(marker);
     return { card, marker };
