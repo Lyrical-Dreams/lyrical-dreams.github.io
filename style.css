@@ -1066,11 +1066,25 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 /* ============================================
    Vertical timeline (Experience page)
    ============================================ */
+
+/* widen just the timeline section so cards can sit further from the
+   center line instead of crowding it */
+.timeline-section {
+  max-width: 1040px;
+}
+
+.timeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 40px;
+  margin: 0 0 28px;
+}
+
 .timeline {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 .timeline::before {
@@ -1086,9 +1100,19 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   transform: translateX(-4px);
 }
 
-.timeline-col { display: flex; flex-direction: column; gap: 28px; }
-.timeline-col-left { align-items: flex-end; text-align: right; }
-.timeline-col-right { align-items: flex-start; text-align: left; }
+/* each row is one staggered entry, placed on the timeline in true
+   chronological order (newest first); the row's empty half keeps the
+   card pushed well away from the center line */
+.timeline-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 88px;
+  align-items: start;
+}
+
+.timeline-row-left .timeline-card { grid-column: 1; justify-self: end; text-align: right; }
+.timeline-row-right .timeline-card { grid-column: 2; justify-self: start; text-align: left; }
 
 .timeline-marker {
   position: absolute;
@@ -1115,13 +1139,13 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 
 .timeline-heading {
   font-family: var(--display);
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--ink-soft);
-  margin: 0 0 4px;
+  margin: 0;
 }
-.timeline-col-left .timeline-heading { color: var(--brand-red); }
-.timeline-col-right .timeline-heading { color: var(--deep-blue); }
+.timeline-heading-red { color: var(--brand-red); }
+.timeline-heading-blue { color: var(--deep-blue); }
 
 .timeline-card {
   position: relative;
@@ -1129,11 +1153,13 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 20px 22px;
-  max-width: 380px;
+  max-width: 360px;
+  width: 100%;
 }
 
-.timeline-col-left .timeline-card { border-right: 3px solid var(--teal); }
-.timeline-col-right .timeline-card { border-left: 3px solid var(--deep-blue); }
+.timeline-row-left .timeline-card { border-right: 3px solid var(--teal); }
+.timeline-row-right .timeline-card,
+.timeline-card-blue { border-left: 3px solid var(--deep-blue); }
 
 .timeline-card-head {
   display: flex;
@@ -1151,7 +1177,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   margin-top: 15px;
   background: var(--teal);
 }
-.timeline-col-right .timeline-dot { background: var(--deep-blue); }
+.timeline-row-right .timeline-dot { background: var(--deep-blue); }
 
 .timeline-logo {
   flex-shrink: 0;
@@ -1169,9 +1195,9 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   letter-spacing: 0.02em;
   object-fit: contain;
 }
-.timeline-col-left .timeline-logo { color: var(--teal); }
-.timeline-col-right .timeline-logo { color: var(--deep-blue); }
-.timeline-col-right .timeline-logo { border-color: color-mix(in srgb, var(--deep-blue) 40%, var(--line)); }
+.timeline-row-left .timeline-logo { color: var(--teal); }
+.timeline-row-right .timeline-logo { color: var(--deep-blue); }
+.timeline-row-right .timeline-logo { border-color: color-mix(in srgb, var(--deep-blue) 40%, var(--line)); }
 
 .timeline-logo-purple { color: var(--violet); border-color: color-mix(in srgb, var(--violet) 40%, var(--line)); }
 .timeline-logo-blue { color: var(--deep-blue); border-color: color-mix(in srgb, var(--deep-blue) 40%, var(--line)); }
@@ -1210,14 +1236,17 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 .intro-note a { color: var(--teal-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 780px) {
-  .timeline { grid-template-columns: 1fr; gap: 24px; }
+  .timeline { gap: 24px; }
   .timeline::before { left: 12px; }
-  .timeline-col-left, .timeline-col-right {
-    align-items: flex-start;
+  .timeline-row { grid-template-columns: 1fr; gap: 0; }
+  .timeline-row-left .timeline-card,
+  .timeline-row-right .timeline-card {
+    grid-column: 1;
+    justify-self: stretch;
     text-align: left;
+    max-width: 100%;
+    margin-left: 32px;
   }
-  .timeline-col-left .timeline-card,
-  .timeline-col-right .timeline-card { max-width: 100%; margin-left: 32px; }
 }
 
 /* ============================================
