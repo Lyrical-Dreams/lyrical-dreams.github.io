@@ -20,9 +20,10 @@ function initTimelineMarkers() {
 
   function position() {
     const timelineTop = timeline.getBoundingClientRect().top;
-    markers.forEach(({ card, marker }) => {
+    markers.forEach(({ card, marker }, i) => {
       const cardTop = card.getBoundingClientRect().top;
-      marker.style.top = (cardTop - timelineTop + 22) + 'px';
+      const stagger = i % 2 === 0 ? -6 : 6; // slight offset so markers don't look mechanically aligned
+      marker.style.top = (cardTop - timelineTop + 22 + stagger) + 'px';
     });
   }
 
