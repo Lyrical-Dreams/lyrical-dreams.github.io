@@ -1076,6 +1076,8 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 .timeline-legend {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
   gap: 8px 40px;
   margin: 0 0 28px;
 }
@@ -1084,7 +1086,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 20px;
 }
 
 .timeline::before {
@@ -1107,12 +1109,27 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0 88px;
+  gap: 0 168px;
   align-items: start;
 }
 
 .timeline-row-left .timeline-card { grid-column: 1; justify-self: end; text-align: right; }
 .timeline-row-right .timeline-card { grid-column: 2; justify-self: start; text-align: left; }
+
+/* connector line from each card's edge to its season/year marker;
+   sized in JS (timeline-marker.js) to the measured gap so it always
+   reaches the pill exactly, never overlapping or falling short */
+.timeline-connector {
+  position: absolute;
+  height: 2px;
+  z-index: 2;
+}
+.timeline-connector.connector-left { background: var(--teal); }
+.timeline-connector.connector-right { background: var(--deep-blue); }
+
+@media (max-width: 780px) {
+  .timeline-connector { display: none; }
+}
 
 .timeline-marker {
   position: absolute;
