@@ -20,7 +20,7 @@ function initMatrixRain(canvas) {
   // Most hidden messages spell out gold; a rare, deliberately soft one
   // spells out in red instead.
   const messages = ['BELIEVE', 'PERSIST', 'GROWTH', 'FOCUS', 'BUILD', 'COURAGE', 'LEARN', 'ADAPT', 'RISE', 'CREATE', 'GRIND', 'DREAM', 'HUSTLE', 'THRIVE'];
-  const secretMessage = 'I LOVE YOU ESHA PANSE';
+  const secretMessage = 'I LOVE YOU';
   const HIGHLIGHT_COLOR = '#F0A83B';
   const SECRET_COLOR = '#E8503A';
   const RAIN_COLOR = '#35E28E';

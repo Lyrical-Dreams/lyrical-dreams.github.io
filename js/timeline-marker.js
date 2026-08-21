@@ -1,7 +1,9 @@
 // Positions a small year-pill marker on the Experience page's central
 // timeline line, aligned to each card's actual vertical position (measured
 // at runtime, so it stays correct regardless of the two columns having
-// different numbers/heights of cards).
+// different numbers/heights of cards) — plus a connector line drawn from
+// each card's edge to its marker, sized exactly to the measured gap so it
+// never overlaps or gets swallowed by the pill.
 
 function initTimelineMarkers() {
   const timeline = document.querySelector('.timeline');
@@ -10,20 +12,39 @@ function initTimelineMarkers() {
   const cards = Array.from(timeline.querySelectorAll('.timeline-card[data-year]'));
   if (!cards.length) return;
 
-  const markers = cards.map((card) => {
+  const items = cards.map((card) => {
+    const isLeft = !!card.closest('.timeline-row-left');
+
     const marker = document.createElement('div');
-    marker.className = 'timeline-marker ' + (card.closest('.timeline-row-left') ? 'marker-left' : 'marker-right');
+    marker.className = 'timeline-marker ' + (isLeft ? 'marker-left' : 'marker-right');
     marker.textContent = card.dataset.year;
     timeline.appendChild(marker);
-    return { card, marker };
+
+    const connector = document.createElement('div');
+    connector.className = 'timeline-connector ' + (isLeft ? 'connector-left' : 'connector-right');
+    timeline.appendChild(connector);
+
+    return { card, marker, connector, isLeft };
   });
 
   function position() {
-    const timelineTop = timeline.getBoundingClientRect().top;
-    markers.forEach(({ card, marker }, i) => {
-      const cardTop = card.getBoundingClientRect().top;
-      const stagger = i % 2 === 0 ? -6 : 6; // slight offset so markers don't look mechanically aligned
-      marker.style.top = (cardTop - timelineTop + 22 + stagger) + 'px';
+    const timelineRect = timeline.getBoundingClientRect();
+
+    items.forEach(({ card, marker, connector, isLeft }) => {
+      const cardRect = card.getBoundingClientRect();
+      // vertical anchor for this row: level with the card's header
+      const anchorY = cardRect.top - timelineRect.top + 26;
+
+      marker.style.top = (anchorY - marker.offsetHeight / 2) + 'px';
+
+      const markerRect = marker.getBoundingClientRect();
+      const cardEdgeX = isLeft ? cardRect.right : cardRect.left;
+      const markerEdgeX = isLeft ? markerRect.left : markerRect.right;
+      const width = Math.max(0, isLeft ? (markerEdgeX - cardEdgeX) : (cardEdgeX - markerEdgeX));
+
+      connector.style.top = anchorY + 'px';
+      connector.style.width = width + 'px';
+      connector.style.left = ((isLeft ? cardEdgeX : markerEdgeX) - timelineRect.left) + 'px';
     });
   }
 
