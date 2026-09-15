@@ -1,5 +1,5 @@
 /* ============================================
-   Tokens — dark theme, site-wide
+   Tokens: dark theme, site-wide
    ============================================ */
 :root {
   --bg:        #0A1512;
@@ -22,7 +22,7 @@
   --deep-blue:   #3B5BDB;
   --brand-red:   #E8503A;
 
-  /* dark hero / matrix-rain panel (now same as base — kept as aliases) */
+  /* dark hero / matrix-rain panel (now same as base, kept as aliases) */
   --dark-bg:      var(--bg);
   --dark-surface: var(--surface);
   --matrix-green: #35E28E;
@@ -476,7 +476,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 .about-card-date { font-size: 0.78rem; color: var(--ink-soft); margin-left: auto; }
 
 /* ============================================
-   Experience — log entries
+   Experience: log entries
    ============================================ */
 .log-entry {
   display: grid;
@@ -1549,6 +1549,13 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   width: 18px; height: 18px; border-radius: 50%; background: var(--teal); color: #06251a;
   display: inline-flex; align-items: center; justify-content: center; font-size: 11px; flex: none;
 }
+.tier1-summary {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0 0 14px;
+  max-width: 640px;
+}
 .tier1-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 7px 18px; font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; margin: 0; padding: 0;
@@ -1659,7 +1666,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
 /* ============================================
    Contact form (Formspree)
    ============================================ */
-.contact-form { margin-top: 48px; max-width: 480px; }
+.contact-form { margin: 48px auto 0; max-width: 480px; }
 .contact-form input,
 .contact-form textarea {
   width: 100%;

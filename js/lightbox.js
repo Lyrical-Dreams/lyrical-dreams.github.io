@@ -1,6 +1,6 @@
 // Click-to-enlarge lightbox for the photography gallery, with prev/next
 // navigation between every photo in the same category (arrow buttons or
-// left/right arrow keys). Works on any <img> inside a .photo-item — new
+// left/right arrow keys). Works on any <img> inside a .photo-item, new
 // photos are picked up automatically, no markup changes needed.
 
 function initLightbox() {

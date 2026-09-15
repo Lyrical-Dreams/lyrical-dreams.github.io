@@ -1,7 +1,7 @@
 // Positions a small year-pill marker on the Experience page's central
 // timeline line, aligned to each card's actual vertical position (measured
 // at runtime, so it stays correct regardless of the two columns having
-// different numbers/heights of cards) — plus a connector line drawn from
+// different numbers/heights of cards), plus a connector line drawn from
 // each card's edge to its marker, sized exactly to the measured gap so it
 // never overlaps or gets swallowed by the pill.
 

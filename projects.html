@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Malayalam:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<!-- Privacy-friendly analytics (GoatCounter — no cookies, GDPR-safe).
+<!-- Privacy-friendly analytics (GoatCounter, no cookies, GDPR-safe).
      Sign up free at https://www.goatcounter.com, then swap YOUR_CODE
      below for the subdomain code they give you. -->
 <script data-goatcounter="https://lyricaldreams.goatcounter.com/count"
@@ -32,7 +32,7 @@
   <section class="section wrap">
 
     <!-- ============================================
-         HOMELAB — moved to top: this is the active,
+         HOMELAB (moved to top): this is the active,
          most-progressed project, shown with a live-style
          status dashboard instead of just a teaser.
          ============================================ -->
@@ -47,14 +47,15 @@
         host up: networking, a Jellyfin + Docker VM, a passed-through media disk,
         WireGuard for remote access, a full security hardening pass, and now the slow,
         steady process of ripping my family's DVD collection into the library.
-        All seven foundational hardening items are closed as of this month — everything
-        below is a live-ish snapshot of where the build actually stands.
+        All seven foundational hardening items closed this month. Everything
+        below is a live snapshot of where the build actually stands.
       </p>
 
       <!-- Favorite-movies mini carousel -->
-      <div class="movie-carousel reveal" data-movies='["Cars (2006)","The Shawshank Redemption","The Silence of the Lambs","The Cider House Rules","Manchester by the Sea","The Departed","As Good as It Gets","Se7en","One Flew Over the Cuckoo's Nest"]'>
+      <div class="movie-carousel reveal">
         <div class="movie-carousel-viewport"></div>
         <div class="movie-dots"></div>
+        <script type="application/json">["Cars (2006)","The Shawshank Redemption","The Silence of the Lambs","The Cider House Rules","Manchester by the Sea","The Departed","As Good as It Gets","Se7en","One Flew Over the Cuckoo's Nest"]</script>
       </div>
 
       <div class="homelab-dashboard">
@@ -70,7 +71,7 @@
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot good"></span>Tier 1 foundation</span>
               <span class="stat-value">7<span class="of">/7</span></span>
-              <span class="stat-sub">All closed Sep 11 — security, backups, HTTPS, power-mgmt permissions.</span>
+              <span class="stat-sub">All closed Sep 11: security, backups, HTTPS, power-mgmt permissions.</span>
             </div>
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot good"></span>Security hardening</span>
@@ -83,9 +84,9 @@
               <span class="stat-sub">Phone + laptop, both confirmed live via handshake checks.</span>
             </div>
             <div class="stat reveal">
-              <span class="stat-label"><span class="dash-dot progress"></span>Movies ripped</span>
-              <span class="stat-value">11</span>
-              <span class="stat-sub">Confirmed in Jellyfin. 12th disc's bonus content in progress.</span>
+              <span class="stat-label"><span class="dash-dot good"></span>Movies ripped</span>
+              <span class="stat-value">33</span>
+              <span class="stat-sub">Full collection ripped and confirmed in Jellyfin.</span>
             </div>
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot good"></span>Backup age</span>
@@ -95,15 +96,15 @@
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot watch"></span>Watch items</span>
               <span class="stat-value">4</span>
-              <span class="stat-sub">Operational quirks worth remembering — not bugs.</span>
+              <span class="stat-sub">Operational quirks worth remembering, not bugs.</span>
             </div>
           </div>
         </div>
 
         <div class="dash-section">
           <div class="dash-section-head">
-            <p class="dash-section-title">Build sequence — Parts 1–6</p>
-            <p class="dash-section-note">Part 6 is the only one still open.</p>
+            <p class="dash-section-title">Build sequence: Parts 1–6</p>
+            <p class="dash-section-note">All six build phases are complete.</p>
           </div>
           <div class="parts-wrap reveal">
             <div class="parts-bar">
@@ -112,7 +113,7 @@
               <div class="part-seg done">3</div>
               <div class="part-seg done">4</div>
               <div class="part-seg done">5</div>
-              <div class="part-seg wip">6</div>
+              <div class="part-seg done">6</div>
             </div>
             <div class="parts-labels">
               <div class="part-label"><b>Proxmox</b>+ networking</div>
@@ -124,14 +125,14 @@
             </div>
             <div class="parts-legend">
               <span><span class="dash-swatch done"></span>Complete</span>
-              <span><span class="dash-swatch wip"></span>In progress</span>
             </div>
           </div>
         </div>
 
         <div class="dash-section">
           <div class="done-strip reveal">
-            <div class="done-strip-head"><span class="dash-checkmark">&#10003;</span>Foundation closed Sep 11 — nothing here is blocking or urgent anymore.</div>
+            <div class="done-strip-head"><span class="dash-checkmark">&#10003;</span>Foundation closed Sep 11. Nothing here is blocking or urgent anymore.</div>
+            <p class="tier1-summary">Tier 1 was everything the rest of the build depends on: locking down access, getting backups running on a real schedule, moving Jellyfin behind actual HTTPS instead of plain HTTP, and giving every family member their own account instead of one shared login.</p>
             <ul class="tier1-grid">
               <li>Full security hardening pass, including backups</li>
               <li>Jellyfin moved behind HTTPS (Caddy reverse proxy)</li>
@@ -144,14 +145,25 @@
         </div>
 
         <div class="dash-section">
+          <div class="done-strip reveal">
+            <div class="done-strip-head"><span class="dash-checkmark">&#10003;</span>Also wrapped up since then.</div>
+            <ul class="tier1-grid">
+              <li>Finished ripping the full DVD collection (33 movies)</li>
+              <li>Roku app installed and working</li>
+              <li>Xbox app installed and working</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dash-section">
           <div class="dash-section-head">
             <p class="dash-section-title">Operational watch items</p>
-            <p class="dash-section-note">Not broken — just easy to forget under pressure.</p>
+            <p class="dash-section-note">Not broken, just easy to forget under pressure.</p>
           </div>
           <div class="flag-list">
             <div class="flag reveal">
               <span class="flag-chip">Network</span>
-              <div class="flag-body"><strong class="title">Home public IP is dynamic.</strong> Both WireGuard configs hard-code the home's public IP as the endpoint — check for an ISP reassignment first if remote access ever stops working after an outage.</div>
+              <div class="flag-body"><strong class="title">Home public IP is dynamic.</strong> Both WireGuard configs hard-code the home's public IP as the endpoint. Check for an ISP reassignment first if remote access ever stops working after an outage.</div>
             </div>
             <div class="flag reveal">
               <span class="flag-chip">Certificates</span>
@@ -171,23 +183,28 @@
         <div class="dash-section">
           <div class="dash-section-head">
             <p class="dash-section-title">What's next</p>
-            <p class="dash-section-note">Picking whichever gives the best return for the time I have.</p>
+            <p class="dash-section-note">Tier 2 is done. These are the bigger, structural Tier 3 ideas.</p>
           </div>
           <div class="task-list">
             <div class="task reveal">
-              <span class="task-name">Finish ripping the DVD collection</span>
-              <span class="task-time">~15–30 min / disc</span>
-              <p class="task-desc">The proven MakeMKV → <code>/mnt/media</code> workflow, repeated one disc at a time — the last open item in the original project scope.</p>
+              <span class="task-name">Verify backups actually restore</span>
+              <span class="task-time">~30–60 min</span>
+              <p class="task-desc">Do a real test restore from the backup target, not just confirm the weekly job completes. The cheapest possible insurance on the single biggest resilience feature in the whole build.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">Roku + Xbox apps</span>
-              <span class="task-time">~15–20 min each</span>
-              <p class="task-desc">Point Jellyfin's official channels at the server so the library is watchable on the TV without a laptop or phone.</p>
+              <span class="task-name">Monitoring / alerting (Uptime Kuma)</span>
+              <span class="task-time">~1–2 hrs</span>
+              <p class="task-desc">A lightweight Docker container that pings the VMs and containers and sends an alert if anything goes down, instead of finding out by accident.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">Photo storage (Immich / Nextcloud)</span>
-              <span class="task-time">~1–3 hrs</span>
-              <p class="task-desc">A new Docker container alongside Jellyfin, reusing infrastructure that's already built — mobile auto-backup and facial recognition included.</p>
+              <span class="task-name">Expand Jellyfin beyond movies</span>
+              <span class="task-time">~15 min / library type</span>
+              <p class="task-desc">TV, music, and home videos, each just another folder plus a library entry. Turns the server into the household's actual media hub at essentially zero marginal setup cost.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">GPU for hardware transcoding</span>
+              <span class="task-time">~1–2 hrs once the card arrives</span>
+              <p class="task-desc">A used GPU plus a small patch to lift the concurrent-transcode cap. Only pays off once multiple people stream at once, but cheap when that day comes.</p>
             </div>
           </div>
         </div>
@@ -195,7 +212,7 @@
     </div>
 
     <!-- ============================================
-         INPUT-CAPTURE DETECTION LAB — moved to bottom
+         INPUT-CAPTURE DETECTION LAB (moved to bottom)
          ============================================ -->
     <div class="project-card project-card-accent-violet reveal">
       <div class="project-head">
@@ -216,9 +233,6 @@
       <p class="project-caveat mono">Research context only. Built and tested in an isolated environment, never deployed outside the lab.</p>
     </div>
 
-    <div class="project-placeholder reveal">
-      <p>More projects to come. Send over the next build and I'll add it here in the same format.</p>
-    </div>
   </section>
 </main>
 

@@ -5,7 +5,7 @@
 //
 // SETUP: get a free key at https://www.omdbapi.com/apikey.aspx (instant,
 // just an email) and paste it in below. Until you do, or if a lookup
-// fails, each movie still shows as a styled title card — nothing breaks.
+// fails, each movie still shows as a styled title card, nothing breaks.
 
 const OMDB_API_KEY = 'b2f8d116';
 
@@ -77,9 +77,10 @@ async function initMovieCarousel() {
 
   const viewport = root.querySelector('.movie-carousel-viewport');
   const dotsWrap = root.querySelector('.movie-dots');
+  const dataEl = root.querySelector('script[type="application/json"]');
   let titles = [];
   try {
-    titles = JSON.parse(root.dataset.movies || '[]');
+    titles = JSON.parse((dataEl && dataEl.textContent) || '[]');
   } catch (err) {
     console.warn('Could not parse movie list', err);
     return;

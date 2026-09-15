@@ -1,5 +1,5 @@
 // Loads the shared header/footer into every page and wires up nav behavior.
-// To edit the nav links, edit partials/header.html — every page updates automatically.
+// To edit the nav links, edit partials/header.html; every page updates automatically.
 
 async function includePartial(selector, url) {
   const target = document.querySelector(selector);
