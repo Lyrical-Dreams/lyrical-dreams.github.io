@@ -8,6 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Malayalam:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Noto+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<!-- Privacy-friendly analytics (GoatCounter — no cookies, GDPR-safe).
+     Sign up free at https://www.goatcounter.com, then swap YOUR_CODE
+     below for the subdomain code they give you. -->
+<script data-goatcounter="https://lyricaldreams.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </head>
 <body data-page="projects">
 
@@ -20,12 +25,179 @@
     <div class="matrix-hero-inner">
       <p class="eyebrow mono">Projects</p>
       <h1 class="page-title">Things I've built</h1>
-      <p class="page-subtitle">Mostly security and data work, done outside of class or a job. A homelab build is in progress and will land here once it's further along.</p>
+      <p class="page-subtitle">Security and data work, plus a homelab build that's far enough along now to show its progress in detail below.</p>
     </div>
   </section>
 
   <section class="section wrap">
-    <div class="project-card project-card-accent-violet">
+
+    <!-- ============================================
+         HOMELAB — moved to top: this is the active,
+         most-progressed project, shown with a live-style
+         status dashboard instead of just a teaser.
+         ============================================ -->
+    <div class="project-card project-card-accent-sky reveal">
+      <div class="project-head">
+        <h3>Homelab</h3>
+        <span class="tag tag-sky">in progress</span>
+        <p class="log-stack mono">Proxmox · Jellyfin · WireGuard · Docker</p>
+      </div>
+      <p class="project-summary">
+        A self-hosted media server and remote-access setup, built from a bare Proxmox
+        host up: networking, a Jellyfin + Docker VM, a passed-through media disk,
+        WireGuard for remote access, a full security hardening pass, and now the slow,
+        steady process of ripping my family's DVD collection into the library.
+        All seven foundational hardening items are closed as of this month — everything
+        below is a live-ish snapshot of where the build actually stands.
+      </p>
+
+      <!-- Favorite-movies mini carousel -->
+      <div class="movie-carousel reveal" data-movies='["Cars (2006)","The Shawshank Redemption","The Silence of the Lambs","The Cider House Rules","Manchester by the Sea","The Departed","As Good as It Gets","Se7en","One Flew Over the Cuckoo's Nest"]'>
+        <div class="movie-carousel-viewport"></div>
+        <div class="movie-dots"></div>
+      </div>
+
+      <div class="homelab-dashboard">
+        <div class="dashboard-meta">
+          <span>Snapshot: <b>Sep 15, 2026</b></span>
+          <span>Host: <b>pve</b></span>
+          <span>Media: <b>VM 100 · jellyfish</b></span>
+          <span>Tunnel: <b>CT 101 · wireguard</b></span>
+        </div>
+
+        <div class="dash-section" style="margin-top:0;">
+          <div class="stat-grid">
+            <div class="stat reveal">
+              <span class="stat-label"><span class="dash-dot good"></span>Tier 1 foundation</span>
+              <span class="stat-value">7<span class="of">/7</span></span>
+              <span class="stat-sub">All closed Sep 11 — security, backups, HTTPS, power-mgmt permissions.</span>
+            </div>
+            <div class="stat reveal">
+              <span class="stat-label"><span class="dash-dot good"></span>Security hardening</span>
+              <span class="stat-value">7<span class="of">/7</span></span>
+              <span class="stat-sub">Full Part 5 pass complete across the stack.</span>
+            </div>
+            <div class="stat reveal">
+              <span class="stat-label"><span class="dash-dot good"></span>WireGuard peers</span>
+              <span class="stat-value">2<span class="of">/2</span></span>
+              <span class="stat-sub">Phone + laptop, both confirmed live via handshake checks.</span>
+            </div>
+            <div class="stat reveal">
+              <span class="stat-label"><span class="dash-dot progress"></span>Movies ripped</span>
+              <span class="stat-value">11</span>
+              <span class="stat-sub">Confirmed in Jellyfin. 12th disc's bonus content in progress.</span>
+            </div>
+            <div class="stat reveal">
+              <span class="stat-label"><span class="dash-dot good"></span>Backup age</span>
+              <span class="stat-value">4<span class="of">d</span></span>
+              <span class="stat-sub">Weekly job, keep-last-4, verified running.</span>
+            </div>
+            <div class="stat reveal">
+              <span class="stat-label"><span class="dash-dot watch"></span>Watch items</span>
+              <span class="stat-value">4</span>
+              <span class="stat-sub">Operational quirks worth remembering — not bugs.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section">
+          <div class="dash-section-head">
+            <p class="dash-section-title">Build sequence — Parts 1–6</p>
+            <p class="dash-section-note">Part 6 is the only one still open.</p>
+          </div>
+          <div class="parts-wrap reveal">
+            <div class="parts-bar">
+              <div class="part-seg done">1</div>
+              <div class="part-seg done">2</div>
+              <div class="part-seg done">3</div>
+              <div class="part-seg done">4</div>
+              <div class="part-seg done">5</div>
+              <div class="part-seg wip">6</div>
+            </div>
+            <div class="parts-labels">
+              <div class="part-label"><b>Proxmox</b>+ networking</div>
+              <div class="part-label"><b>Jellyfin</b>+ Docker VM</div>
+              <div class="part-label"><b>Media disk</b>passthrough</div>
+              <div class="part-label"><b>WireGuard</b>remote access</div>
+              <div class="part-label"><b>Hardening</b>+ backups</div>
+              <div class="part-label"><b>Ripping</b>the library</div>
+            </div>
+            <div class="parts-legend">
+              <span><span class="dash-swatch done"></span>Complete</span>
+              <span><span class="dash-swatch wip"></span>In progress</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section">
+          <div class="done-strip reveal">
+            <div class="done-strip-head"><span class="dash-checkmark">&#10003;</span>Foundation closed Sep 11 — nothing here is blocking or urgent anymore.</div>
+            <ul class="tier1-grid">
+              <li>Full security hardening pass, including backups</li>
+              <li>Jellyfin moved behind HTTPS (Caddy reverse proxy)</li>
+              <li>Personal non-admin Jellyfin account created</li>
+              <li>Individual Jellyfin accounts for family members</li>
+              <li>Laptop WireGuard peer added and verified live</li>
+              <li>Weekly backups to a dedicated backup target</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="dash-section">
+          <div class="dash-section-head">
+            <p class="dash-section-title">Operational watch items</p>
+            <p class="dash-section-note">Not broken — just easy to forget under pressure.</p>
+          </div>
+          <div class="flag-list">
+            <div class="flag reveal">
+              <span class="flag-chip">Network</span>
+              <div class="flag-body"><strong class="title">Home public IP is dynamic.</strong> Both WireGuard configs hard-code the home's public IP as the endpoint — check for an ISP reassignment first if remote access ever stops working after an outage.</div>
+            </div>
+            <div class="flag reveal">
+              <span class="flag-chip">Certificates</span>
+              <div class="flag-body"><strong class="title">Re-check HTTPS trust after any full restart.</strong> The self-signed root cert has needed re-installing on the phone before after a full reboot.</div>
+            </div>
+            <div class="flag reveal">
+              <span class="flag-chip">Access scope</span>
+              <div class="flag-body"><strong class="title">WireGuard gets you into Jellyfin, not the tunnel box itself.</strong> Administering that container always means being on home WiFi first.</div>
+            </div>
+            <div class="flag reveal">
+              <span class="flag-chip">Autostart</span>
+              <div class="flag-body"><strong class="title">Guest autostart has failed silently once before.</strong> Worth a glance at the Proxmox UI after any host restart rather than assuming both guests came back up.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section">
+          <div class="dash-section-head">
+            <p class="dash-section-title">What's next</p>
+            <p class="dash-section-note">Picking whichever gives the best return for the time I have.</p>
+          </div>
+          <div class="task-list">
+            <div class="task reveal">
+              <span class="task-name">Finish ripping the DVD collection</span>
+              <span class="task-time">~15–30 min / disc</span>
+              <p class="task-desc">The proven MakeMKV → <code>/mnt/media</code> workflow, repeated one disc at a time — the last open item in the original project scope.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Roku + Xbox apps</span>
+              <span class="task-time">~15–20 min each</span>
+              <p class="task-desc">Point Jellyfin's official channels at the server so the library is watchable on the TV without a laptop or phone.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Photo storage (Immich / Nextcloud)</span>
+              <span class="task-time">~1–3 hrs</span>
+              <p class="task-desc">A new Docker container alongside Jellyfin, reusing infrastructure that's already built — mobile auto-backup and facial recognition included.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================
+         INPUT-CAPTURE DETECTION LAB — moved to bottom
+         ============================================ -->
+    <div class="project-card project-card-accent-violet reveal">
       <div class="project-head">
         <h3>Input-Capture Detection Lab</h3>
         <span class="tag tag-violet">security research</span>
@@ -44,19 +216,7 @@
       <p class="project-caveat mono">Research context only. Built and tested in an isolated environment, never deployed outside the lab.</p>
     </div>
 
-    <div class="project-card project-card-accent-sky project-card-teaser">
-      <div class="project-head">
-        <h3>Homelab</h3>
-        <span class="tag tag-sky">in progress</span>
-      </div>
-      <p class="project-summary">
-        Currently planning and building out a homelab, self-hosted services, a bit of network
-        segmentation, probably more monitoring than is strictly necessary. Full writeup coming once
-        there's something worth showing.
-      </p>
-    </div>
-
-    <div class="project-placeholder">
+    <div class="project-placeholder reveal">
       <p>More projects to come. Send over the next build and I'll add it here in the same format.</p>
     </div>
   </section>
@@ -64,5 +224,7 @@
 
 <div id="site-footer"></div>
 <script src="js/site.js"></script>
+<script src="js/matrix.js"></script>
+<script src="js/movie-carousel.js"></script>
 </body>
 </html>

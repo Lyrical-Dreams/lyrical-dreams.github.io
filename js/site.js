@@ -51,6 +51,24 @@ async function initSite() {
     }, { threshold: 0.25 });
     revealEls.forEach((el) => observer.observe(el));
   }
+  // Generic scroll-reveal utility: add class="reveal" to any element on
+  // any page and it will fade/slide into view the first time it's
+  // scrolled into the viewport. Stat tiles, cards, etc. all use this.
+  const revealTargets = document.querySelectorAll('.reveal');
+  if (revealTargets.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach((el, i) => {
+      el.style.transitionDelay = ((i % 6) * 70) + 'ms';
+      revealObserver.observe(el);
+    });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initSite);
