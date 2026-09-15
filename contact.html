@@ -21,7 +21,7 @@
 
 <main>
   <section class="page-hero wrap contact-hero">
-    <img src="images/headshot.jpg" alt="Nayan Pillai" class="contact-headshot">
+    <img src="images/photography/headshot.jpg" alt="Nayan Pillai" class="contact-headshot">
     <div>
       <p class="eyebrow mono">Contact</p>
       <h1 class="page-title">Let's talk!</h1>
@@ -93,22 +93,18 @@
     -->
 
     <p class="eyebrow mono" style="margin-top: 56px;">Send a message</p>
-    <!--
-      SETUP: sign up free at https://formspree.io, create a form, and
-      replace YOUR_FORM_ID below with the ID Formspree gives you. Until
-      you do, this form will show Formspree's "unknown form" error on
-      submit instead of actually sending anything.
-    -->
-    <form action="https://formspree.io/f/xzezpvbb" method="POST" class="contact-form reveal">
+    <form action="https://formspree.io/f/xzezpvbb" method="POST" class="contact-form reveal" id="contactForm">
       <input type="text" name="name" placeholder="Name" required>
       <input type="email" name="email" placeholder="Email" required>
       <textarea name="message" placeholder="Message" required rows="5"></textarea>
       <button type="submit" class="btn btn-primary">Send</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
   </section>
 </main>
 
 <div id="site-footer"></div>
 <script src="js/site.js"></script>
+<script src="js/contact-form.js"></script>
 </body>
 </html>
