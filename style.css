@@ -1256,7 +1256,8 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   color: var(--ink-soft);
   font-size: 0.95rem;
   max-width: 620px;
-  margin: 0 0 40px;
+  margin: 0 auto 40px;
+  text-align: center;
 }
 .intro-note a { color: var(--teal-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
@@ -1610,6 +1611,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   display: flex;
   align-items: center;
   gap: 14px;
+  max-width: 380px;
 }
 .movie-carousel-viewport {
   position: relative;

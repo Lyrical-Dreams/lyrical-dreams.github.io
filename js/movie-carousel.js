@@ -1,69 +1,68 @@
 // Powers the small "favorite movies" carousel on the Projects page
-// (under the Homelab writeup). Reads a JSON list of titles from the
-// container's data-movies attribute, fetches poster art + year from the
-// OMDb API, and rotates through them automatically.
+// (under the Homelab writeup). Reads a list of {title, year} entries
+// from a JSON <script> block in the page, so the title and year always
+// show correctly even if the API lookup below never runs. It then tries
+// OMDb purely for poster art, layering that on top when it succeeds.
 //
-// SETUP: get a free key at https://www.omdbapi.com/apikey.aspx (instant,
-// just an email) and paste it in below. Until you do, or if a lookup
-// fails, each movie still shows as a styled title card, nothing breaks.
+// SETUP: get a free key at https://www.omdbapi.com/apikey.aspx. OMDb
+// emails a confirmation link you have to click before the key goes
+// live, so if posters aren't showing up, that's the first thing to
+// check, not the key itself. Until it's active, or if a lookup fails,
+// each movie still shows a styled title card, nothing breaks.
 
 const OMDB_API_KEY = 'b2f8d116';
 
-async function fetchMovieMeta(title) {
-  if (!OMDB_API_KEY || OMDB_API_KEY === 'b2f8d116') return null;
+async function fetchPoster(title, year) {
+  if (!OMDB_API_KEY || OMDB_API_KEY === 'YOUR_OMDB_API_KEY') return null;
   try {
-    const res = await fetch('https://www.omdbapi.com/?apikey=' + encodeURIComponent(OMDB_API_KEY) + '&t=' + encodeURIComponent(title));
+    const res = await fetch('https://www.omdbapi.com/?apikey=' + encodeURIComponent(OMDB_API_KEY) + '&t=' + encodeURIComponent(title) + (year ? '&y=' + encodeURIComponent(year) : ''));
     const data = await res.json();
     if (data.Response === 'False') return null;
     return {
-      title: data.Title || title,
-      year: data.Year || '',
       poster: data.Poster && data.Poster !== 'N/A' ? data.Poster : null,
       genre: data.Genre ? data.Genre.split(',')[0].trim() : ''
     };
   } catch (err) {
-    console.warn('OMDb lookup failed for', title, err);
+    console.warn('OMDb poster lookup failed for', title, err);
     return null;
   }
 }
 
-function buildSlide(meta, fallbackTitle, index) {
+function buildSlide(entry, posterMeta, index) {
   const slide = document.createElement('div');
   slide.className = 'movie-slide' + (index === 0 ? ' is-active' : '');
 
-  const posterWrap = document.createElement('div');
-  if (meta && meta.poster) {
+  if (posterMeta && posterMeta.poster) {
     const img = document.createElement('img');
     img.className = 'movie-poster';
-    img.src = meta.poster;
-    img.alt = (meta.title || fallbackTitle) + ' poster';
+    img.src = posterMeta.poster;
+    img.alt = entry.title + ' poster';
     img.loading = 'lazy';
-    posterWrap.appendChild(img);
+    slide.appendChild(img);
   } else {
     const fallback = document.createElement('div');
     fallback.className = 'movie-poster-fallback';
     fallback.textContent = '\u{1F3AC}';
-    posterWrap.appendChild(fallback);
+    slide.appendChild(fallback);
   }
-  slide.appendChild(posterWrap.firstChild);
 
   const info = document.createElement('div');
   info.className = 'movie-info';
 
   const titleEl = document.createElement('p');
   titleEl.className = 'movie-title';
-  titleEl.textContent = (meta && meta.title) || fallbackTitle;
+  titleEl.textContent = entry.year ? entry.title + ' (' + entry.year + ')' : entry.title;
   info.appendChild(titleEl);
 
   const yearEl = document.createElement('p');
   yearEl.className = 'movie-year';
-  yearEl.textContent = (meta && meta.year) || 'favorite';
+  yearEl.textContent = 'favorite';
   info.appendChild(yearEl);
 
-  if (meta && meta.genre) {
+  if (posterMeta && posterMeta.genre) {
     const tag = document.createElement('span');
     tag.className = 'movie-tag';
-    tag.textContent = meta.genre;
+    tag.textContent = posterMeta.genre;
     info.appendChild(tag);
   }
 
@@ -78,22 +77,22 @@ async function initMovieCarousel() {
   const viewport = root.querySelector('.movie-carousel-viewport');
   const dotsWrap = root.querySelector('.movie-dots');
   const dataEl = root.querySelector('script[type="application/json"]');
-  let titles = [];
+  let entries = [];
   try {
-    titles = JSON.parse((dataEl && dataEl.textContent) || '[]');
+    entries = JSON.parse((dataEl && dataEl.textContent) || '[]');
   } catch (err) {
     console.warn('Could not parse movie list', err);
     return;
   }
-  if (!titles.length) return;
+  if (!entries.length) return;
 
-  const metas = await Promise.all(titles.map(fetchMovieMeta));
+  const posterMetas = await Promise.all(entries.map((e) => fetchPoster(e.title, e.year)));
 
-  titles.forEach((title, i) => {
-    viewport.appendChild(buildSlide(metas[i], title, i));
+  entries.forEach((entry, i) => {
+    viewport.appendChild(buildSlide(entry, posterMetas[i], i));
     const dot = document.createElement('button');
     dot.className = 'movie-dot' + (i === 0 ? ' is-active' : '');
-    dot.setAttribute('aria-label', 'Show ' + title);
+    dot.setAttribute('aria-label', 'Show ' + entry.title);
     dot.addEventListener('click', () => goTo(i));
     dotsWrap.appendChild(dot);
   });

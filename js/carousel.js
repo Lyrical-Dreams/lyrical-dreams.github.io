@@ -21,8 +21,16 @@ function initCarousels() {
     let index = 0;
     let timer = null;
 
+    // offsetWidth (not getBoundingClientRect) on purpose: the active slide
+    // is scale(1) and the peeking slides are scale(0.94), and
+    // getBoundingClientRect reports that scaled-down size. Since every
+    // .photo-item has the same flex-basis, offsetWidth (the layout box,
+    // unaffected by the transform) is the true, consistent slide width
+    // regardless of which one happens to be active right now. Using the
+    // scaled rect here was why the frame visibly jumped sideways when
+    // slide 1 (unscaled, correct width) wasn't the active one.
     function slideWidth() {
-      return items[0].getBoundingClientRect().width;
+      return items[0].offsetWidth;
     }
 
     function gapPx() {
