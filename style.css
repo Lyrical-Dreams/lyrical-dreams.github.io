@@ -1081,13 +1081,29 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   max-width: 1040px;
 }
 
+/* mirrors the timeline-row grid below it (1fr/1fr, items pulled to the
+   inner edges) so the gap between the two headings lands exactly on the
+   timeline's true center line, regardless of the two labels being very
+   different lengths -- centering the row as one flex block (the old
+   rule) put the gap wherever the shorter+longer text happened to add
+   up to, which was visibly left of center */
 .timeline-legend {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px 40px;
   margin: 0 0 28px;
+}
+.timeline-legend .timeline-heading:first-child { justify-self: end; text-align: right; }
+.timeline-legend .timeline-heading:last-child { justify-self: start; text-align: left; }
+
+@media (max-width: 560px) {
+  .timeline-legend {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .timeline-legend .timeline-heading:first-child,
+  .timeline-legend .timeline-heading:last-child { justify-self: center; text-align: center; }
 }
 
 .timeline {
@@ -1104,7 +1120,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   bottom: 0;
   left: 50%;
   width: 8px;
-  background: linear-gradient(180deg, var(--teal), var(--deep-blue));
+  background: linear-gradient(180deg, var(--brand-red), var(--deep-blue));
   opacity: 0.5;
   border-radius: 4px;
   transform: translateX(-4px);
@@ -1132,7 +1148,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   height: 2px;
   z-index: 2;
 }
-.timeline-connector.connector-left { background: var(--teal); }
+.timeline-connector.connector-left { background: var(--brand-red); }
 .timeline-connector.connector-right { background: var(--deep-blue); }
 
 @media (max-width: 780px) {
@@ -1155,7 +1171,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   color: var(--ink);
   z-index: 3;
 }
-.timeline-marker.marker-left { border: 2px solid var(--teal); }
+.timeline-marker.marker-left { border: 2px solid var(--brand-red); }
 .timeline-marker.marker-right { border: 2px solid var(--deep-blue); }
 
 @media (max-width: 780px) {
@@ -1182,7 +1198,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   width: 100%;
 }
 
-.timeline-row-left .timeline-card { border-right: 3px solid var(--teal); }
+.timeline-row-left .timeline-card { border-right: 3px solid var(--brand-red); }
 .timeline-row-right .timeline-card,
 .timeline-card-blue { border-left: 3px solid var(--deep-blue); }
 
@@ -1200,7 +1216,7 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   height: 10px;
   border-radius: 50%;
   margin-top: 15px;
-  background: var(--teal);
+  background: var(--brand-red);
 }
 .timeline-row-right .timeline-dot { background: var(--deep-blue); }
 
@@ -1220,13 +1236,14 @@ h2, h3 { font-family: var(--display); letter-spacing: -0.01em; }
   letter-spacing: 0.02em;
   object-fit: contain;
 }
-.timeline-row-left .timeline-logo { color: var(--teal); }
+.timeline-row-left .timeline-logo { color: var(--brand-red); }
 .timeline-row-right .timeline-logo { color: var(--deep-blue); }
 .timeline-row-right .timeline-logo { border-color: color-mix(in srgb, var(--deep-blue) 40%, var(--line)); }
 
 .timeline-logo-purple { color: var(--violet); border-color: color-mix(in srgb, var(--violet) 40%, var(--line)); }
 .timeline-logo-blue { color: var(--deep-blue); border-color: color-mix(in srgb, var(--deep-blue) 40%, var(--line)); }
 .timeline-logo-green { color: var(--teal); border-color: color-mix(in srgb, var(--teal) 40%, var(--line)); }
+.timeline-logo-red { color: var(--brand-red); border-color: color-mix(in srgb, var(--brand-red) 40%, var(--line)); }
 .timeline-logo-flame { background: var(--surface); }
 
 .log-org-purple { color: var(--violet); font-weight: 600; }
