@@ -84,9 +84,9 @@
               <span class="stat-sub">Phone + laptop, both confirmed live via handshake checks.</span>
             </div>
             <div class="stat reveal">
-              <span class="stat-label"><span class="dash-dot progress"></span>Movies ripped</span>
-              <span class="stat-value">11<span class="of">/~20</span></span>
-              <span class="stat-sub">11 confirmed in Jellyfin; 12th (X-Men bonus disc) in progress.</span>
+              <span class="stat-label"><span class="dash-dot good"></span>Movies ripped</span>
+              <span class="stat-value">45</span>
+              <span class="stat-sub">Full DVD collection ripped and streaming in Jellyfin.</span>
             </div>
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot good"></span>Backups</span>
@@ -177,27 +177,37 @@
           </div>
           <div class="task-list">
             <div class="task reveal">
-              <span class="task-name">Finish ripping the DVD collection</span>
-              <span class="task-time">ongoing, ~15–25 min/disc</span>
-              <p class="task-desc">Eleven movies confirmed so far, twelfth (X-Men bonus disc extras) in progress. Workflow's proven; the rest is just time, one disc at a time.</p>
-            </div>
-            <div class="task reveal">
-              <span class="task-name">Set up Roku and/or Xbox apps</span>
-              <span class="task-time">~10 min each</span>
-              <p class="task-desc">Official Jellyfin apps exist for both, staying on plain HTTP since neither platform can trust the self-signed cert. Not yet installed.</p>
-            </div>
-            <div class="task reveal">
               <span class="task-name">Cosmetic hostname fix on CT 101</span>
               <span class="task-time">~5 min</span>
               <p class="task-desc">Shows as CT101 instead of wireguard. Purely cosmetic; hostnamectl set-hostname wireguard whenever it's worth the two minutes.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">Photo storage / file sync</span>
-              <span class="task-time">not started, no timeline</span>
-              <p class="task-desc">Jellyfin's photo support is minimal, so a dedicated tool (Immich or PhotoPrism) is the right call whenever this gets picked up. Would run as its own container alongside Jellyfin.</p>
+              <span class="task-name">Set up Dynamic DNS for the home WAN IP</span>
+              <span class="task-time">~20–30 min</span>
+              <p class="task-desc">WireGuard configs currently hard-code the raw public IP, which breaks silently if the ISP ever reassigns it. A free DDNS service gives WireGuard a hostname instead, so it's one less thing to remember.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Move Jellyfin's HTTPS cert to a real trusted one</span>
+              <span class="task-time">depends on DDNS above</span>
+              <p class="task-desc">A real Let's Encrypt cert via DNS-01 challenge (once DDNS exists) removes the self-signed cert's re-trust-after-every-reboot gotcha entirely.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Xfinity Bridge Mode</span>
+              <span class="task-time">~15–20 min, router-side</span>
+              <p class="task-desc">Eliminates the double-NAT (Xfinity gateway + Orbi) and the "which WiFi network" ambiguity. No new hardware needed.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Verify backups actually restore</span>
+              <span class="task-time">~30–45 min</span>
+              <p class="task-desc">Spin up a scratch VM/CT from the latest backup-momentus snapshot and confirm it boots with data intact — quick enough not to wait for Tier 3.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Reconsider CT 101's SSH scope (optional)</span>
+              <span class="task-time">~10 min if wanted</span>
+              <p class="task-desc">The WireGuard tunnel currently reaches Jellyfin but not CT 101 itself, so tunnel administration always needs home WiFi. Only worth changing if remote CT 101 admin becomes something actually needed.</p>
             </div>
           </div>
-          <p class="tier1-summary" style="margin-top:14px;">Looking further ahead: the docs also flag Xfinity Bridge Mode as a lower-priority Tier 2 cleanup (removes the double-NAT, deferred since the current setup works fine). Once the Tier 2 list above is clear, Tier 3 candidates on the roadmap include lightweight monitoring/alerting for VM 100 and CT 101 (e.g. Uptime Kuma), expanding the library beyond movies into TV and music, a budget GPU for Jellyfin hardware transcoding, and periodically verifying that backups actually restore.</p>
+          <p class="tier1-summary" style="margin-top:14px;">Looking further ahead: Tier 3 now includes a network-wide DNS sinkhole and blocklist setup (Pi-hole or AdGuard Home) for ad/tracker blocking on every device, tightening the docs-to-site automation toward real-time instead of twice-daily, photo storage / file sync (moved here from Tier 2, bigger project than a quick task), lightweight monitoring/alerting for VM 100 and CT 101 (e.g. Uptime Kuma), expanding the library beyond movies into TV and music, a budget GPU for Jellyfin hardware transcoding, GPU passthrough for a Windows gaming VM, and eventual network segmentation (VLANs).</p>
         </div>
       </div>
     </div>
