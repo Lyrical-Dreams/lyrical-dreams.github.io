@@ -60,7 +60,7 @@
 
       <div class="homelab-dashboard">
         <div class="dashboard-meta">
-          <span>Snapshot: <b>Sep 24, 2026</b></span>
+          <span>Snapshot: <b>Sep 25, 2026</b></span>
           <span>Host: <b>pve</b></span>
           <span>Media: <b>VM 100 · jellyfish</b></span>
           <span>Tunnel: <b>CT 101 · wireguard</b></span>
@@ -95,7 +95,7 @@
             </div>
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot watch"></span>Watch items</span>
-              <span class="stat-value">4</span>
+              <span class="stat-value">5</span>
               <span class="stat-sub">Operational quirks worth remembering, not bugs.</span>
             </div>
           </div>
@@ -167,6 +167,10 @@
               <span class="flag-chip">Autostart</span>
               <div class="flag-body"><strong class="title">Guest autostart has failed silently once before.</strong> Worth a glance at the Proxmox UI after any host restart rather than assuming both guests came back up.</div>
             </div>
+            <div class="flag reveal">
+              <span class="flag-chip">Disk space</span>
+              <div class="flag-body"><strong class="title">VM 100's 15GB root disk has filled up and crashed Jellyfin twice.</strong> Jellyfin's own cache has no size cap, and without ~2GB free it crashes instead of failing gracefully. Cleared the cache both times as a quick fix; capping the cache and growing the disk are next up.</div>
+            </div>
           </div>
         </div>
 
@@ -176,6 +180,16 @@
             <p class="dash-section-note">Tier 1 is done; these are the Tier 2 items up next, at your own pace (bigger Tier 3 upgrades come after).</p>
           </div>
           <div class="task-list">
+            <div class="task reveal">
+              <span class="task-name">Cap Jellyfin's cache / add a cleanup schedule</span>
+              <span class="task-time">~15-20 min</span>
+              <p class="task-desc">A settings change in Jellyfin's Dashboard (Scheduled Tasks, or the cache/transcode path settings), maybe one container restart. Nothing to back up first. The direct patch for the disk-space crash noted above.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Grow VM 100's root disk</span>
+              <span class="task-time">~30-45 min</span>
+              <p class="task-desc">Confirm the partition layout, resize the disk in Proxmox, then extend the LVM volume and filesystem in the guest. Do it right after confirming the weekly backup is current. Removes the 15GB ceiling for good, rather than just delaying the next fill-up.</p>
+            </div>
             <div class="task reveal">
               <span class="task-name">Cosmetic hostname fix on CT 101</span>
               <span class="task-time">~5 min</span>
