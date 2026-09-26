@@ -190,33 +190,33 @@
               <span class="task-time">completed</span>
               <p class="task-desc">Found and fixed two backup bugs along the way: the job was actually running monthly (not weekly, as previously documented), and the Momentus drive had no <code>/etc/fstab</code> entry so a plain <code>mount -a</code> after replugging it did nothing. Fixed both (fstab entry with <code>nofail</code>, schedule changed to biweekly &mdash; 1st &amp; 3rd Thursday, 5pm). Disk grow turned out simpler than expected: 15GB of LVM space was already provisioned on the 32GB virtual disk but never allocated &mdash; extended live with <code>lvextend</code> + <code>resize2fs</code>, no Proxmox-side resize, no downtime. Root filesystem now 30GB, 45% used.</p>
             </div>
-            <div class="task reveal">
-              <span class="task-name">1. Cosmetic hostname fix on CT 101</span>
-              <span class="task-time">~5 min &middot; anytime today</span>
-              <p class="task-desc">Shows as CT101 instead of wireguard. Purely cosmetic; hostnamectl set-hostname wireguard &mdash; a free two minutes while already in an SSH session.</p>
+            <div class="task task-done reveal">
+              <span class="task-name">&#10003; Cosmetic hostname fix on CT 101 <em>&mdash; done Sep 26</em></span>
+              <span class="task-time">completed</span>
+              <p class="task-desc">Fixed properly via <code>pct set 101 --hostname wireguard</code> from the Proxmox host (not just hostnamectl inside the guest &mdash; CT 101's hostname is managed by Proxmox's own LXC config, so a guest-only change would've reverted on the next restart), then a quick <code>pct reboot 101</code>. Confirmed persistent.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">2. Verify backups actually restore</span>
+              <span class="task-name">1. Verify backups actually restore</span>
               <span class="task-time">~30–45 min &middot; today if there's time, else this week</span>
               <p class="task-desc">Spin up a scratch VM/CT from the latest backup-momentus snapshot and confirm it boots with data intact. Highest-value item on the list &mdash; a backup that's never been restored is unproven.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">3. Set up Dynamic DNS for the home WAN IP</span>
+              <span class="task-name">2. Set up Dynamic DNS for the home WAN IP</span>
               <span class="task-time">~20–30 min &middot; later this week</span>
               <p class="task-desc">WireGuard configs currently hard-code the raw public IP, which breaks silently if the ISP ever reassigns it. A free DDNS service gives WireGuard a hostname instead, so it's one less thing to remember.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">4. Move Jellyfin's HTTPS cert to a real trusted one</span>
-              <span class="task-time">depends on #3 above</span>
+              <span class="task-name">3. Move Jellyfin's HTTPS cert to a real trusted one</span>
+              <span class="task-time">depends on #2 above</span>
               <p class="task-desc">A real Let's Encrypt cert via DNS-01 challenge (once DDNS exists) removes the self-signed cert's re-trust-after-every-reboot gotcha entirely.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">5. Xfinity Bridge Mode</span>
+              <span class="task-name">4. Xfinity Bridge Mode</span>
               <span class="task-time">~15–20 min, router-side &middot; do with a clear window</span>
               <p class="task-desc">Eliminates the double-NAT (Xfinity gateway + Orbi) and the "which WiFi network" ambiguity. No new hardware needed, but it's a network config change &mdash; save it for a session with no active streaming/tunnel need in case of a hiccup.</p>
             </div>
             <div class="task reveal">
-              <span class="task-name">6. Reconsider CT 101's SSH scope (optional)</span>
+              <span class="task-name">5. Reconsider CT 101's SSH scope (optional)</span>
               <span class="task-time">~10 min if wanted</span>
               <p class="task-desc">The WireGuard tunnel currently reaches Jellyfin but not CT 101 itself, so tunnel administration always needs home WiFi. Only worth changing if remote CT 101 admin becomes something actually needed.</p>
             </div>
