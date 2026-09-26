@@ -220,6 +220,21 @@
               <span class="task-time">~10 min if wanted</span>
               <p class="task-desc">The WireGuard tunnel currently reaches Jellyfin but not CT 101 itself, so tunnel administration always needs home WiFi. Only worth changing if remote CT 101 admin becomes something actually needed.</p>
             </div>
+            <div class="task reveal">
+              <span class="task-name">6. Make backup/job notifications actually reach me</span>
+              <span class="task-time">~10-15 min</span>
+              <p class="task-desc">Backup job notifications currently go to local mail on the Proxmox host, which nothing checks day-to-day &mdash; this week's backup failure was only caught because it was investigated by hand. Point Proxmox's notification target at a real email or webhook instead.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">7. Proactive low-disk-space warning on VM 100</span>
+              <span class="task-time">~15-20 min</span>
+              <p class="task-desc">The Sep 25/26 disk-fill crashes were only ever caught reactively, after Jellyfin was already down. A simple threshold check/notification would flag it while there's still headroom to fix, not after.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">8. Confirm automatic security updates on the Proxmox host</span>
+              <span class="task-time">~10 min</span>
+              <p class="task-desc">VM 100 and CT 101 both have unattended-upgrades configured; the Proxmox host itself was never confirmed to have the same.</p>
+            </div>
           </div>
           <p class="tier1-summary" style="margin-top:14px;">Looking further ahead: Tier 3 now includes a network-wide DNS sinkhole and blocklist setup (Pi-hole or AdGuard Home) for ad/tracker blocking on every device, tightening the docs-to-site automation toward real-time instead of twice-daily, photo storage / file sync (moved here from Tier 2, bigger project than a quick task), lightweight monitoring/alerting for VM 100 and CT 101 (e.g. Uptime Kuma), expanding the library beyond movies into TV and music, a budget GPU for Jellyfin hardware transcoding, GPU passthrough for a Windows gaming VM, and eventual network segmentation (VLANs).</p>
         </div>
