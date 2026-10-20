@@ -149,7 +149,7 @@
         <div class="dash-section">
           <div class="dash-section-head">
             <p class="dash-section-title">Recent progress</p>
-            <p class="dash-section-note">Library growth, a second ripping path, and some debugging worth keeping.</p>
+            <p class="dash-section-note">Library growth, a second ripping path, a safer ripping routine, and some debugging worth keeping.</p>
           </div>
           <div class="task-list">
             <div class="task task-done reveal">
@@ -166,6 +166,11 @@
               <span class="task-name">&#10003; Ripping toolchain kept current <em>&mdash; done Oct 8-9</em></span>
               <span class="task-time">completed</span>
               <p class="task-desc">When the old MakeMKV build expired, rebuilt it from source on the media VM (now v2.0.0), and corrected the optical-drive device path after finding the VM exposes both an empty virtual DVD drive and the real passed-through one.</p>
+            </div>
+            <div class="task task-done reveal">
+              <span class="task-name">&#10003; Safer ripping routine: stage, verify, then publish <em>&mdash; done Oct 9</em></span>
+              <span class="task-time">completed</span>
+              <p class="task-desc">A few pasted-command mishaps (a rip started by accident straight into the live library, one aimed at a folder that didn't exist yet, one blocked by root-owned permissions) led to a new routine: rip into a staging folder outside the Jellyfin library, check the file's size and duration with <code>ffprobe</code>, then move it into place and eject as separate steps, so a half-written file never shows up in the library. The same routine covers a two-sided DVD: rip each side separately, then append the halves with <code>mkvmerge</code>. Along the way I traced a wrong-title match in Jellyfin to the metadata database filing that title as a TV miniseries, which a movie library can't find. All written up as repeatable manual sections.</p>
             </div>
           </div>
         </div>
