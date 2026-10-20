@@ -46,8 +46,9 @@
         A self-hosted media server and remote-access setup, built from a bare Proxmox
         host up: networking, a Jellyfin + Docker VM, a passed-through media disk,
         WireGuard for remote access, a full security hardening pass, and a complete
-        rip of my family's DVD collection into the library.
-        All seven foundational hardening items closed this month. Everything
+        rip of my family's DVD collection into the library, followed by a laptop-based
+        ripping path with checksum-verified bulk transfer to the server.
+        All seven foundational hardening items closed in September. Everything
         below is a live snapshot of where the build actually stands.
       </p>
 
@@ -85,8 +86,8 @@
             </div>
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot good"></span>Movies ripped</span>
-              <span class="stat-value">45</span>
-              <span class="stat-sub">Full DVD collection ripped and streaming in Jellyfin.</span>
+              <span class="stat-value">61</span>
+              <span class="stat-sub">45 ripped on the server plus 16 added from laptop rips (Oct 18-20), all streaming in Jellyfin.</span>
             </div>
             <div class="stat reveal">
               <span class="stat-label"><span class="dash-dot good"></span>Backups</span>
@@ -142,6 +143,30 @@
               <li>Laptop WireGuard peer added and verified live</li>
               <li>Weekly backups to a dedicated backup target</li>
             </ul>
+          </div>
+        </div>
+
+        <div class="dash-section">
+          <div class="dash-section-head">
+            <p class="dash-section-title">Recent progress</p>
+            <p class="dash-section-note">Library growth, a second ripping path, and some debugging worth keeping.</p>
+          </div>
+          <div class="task-list">
+            <div class="task task-done reveal">
+              <span class="task-name">&#10003; Second ripping path: rip on a laptop, transfer later <em>&mdash; done Oct 16-20</em></span>
+              <span class="task-time">completed</span>
+              <p class="task-desc">Discs can now be ripped away from the server: MakeMKV for Windows on a laptop with a USB DVD drive, then moved to the media VM with rsync over SSH from WSL. That added 16 movies (99 GB). The first transfer died mid-file overnight (broken pipe, rsync exit 255); the rerun used SSH keepalives inside tmux, resumed cleanly from the partial file, and a <code>rsync --checksum</code> dry run afterward showed no file content differing. Both halves are written up as repeatable runbook sections.</p>
+            </div>
+            <div class="task task-done reveal">
+              <span class="task-name">&#10003; Jellyfin library bug traced down to the database <em>&mdash; done Sep 25</em></span>
+              <span class="task-time">completed</span>
+              <p class="task-desc">The Movies library threw a "Found duplicate path" error and about 49 movies were invisible even though they existed on disk and in the database. Two causes: a duplicate top-level media folder with an orphaned database row, then a stale <code>TopParentId</code> in Jellyfin's SQLite schema pointing at a folder identity that no longer existed. Fixed with a backed-up, scoped <code>UPDATE</code> and a container restart, no rescan needed; the diagnostic path is documented for next time.</p>
+            </div>
+            <div class="task task-done reveal">
+              <span class="task-name">&#10003; Ripping toolchain kept current <em>&mdash; done Oct 8-9</em></span>
+              <span class="task-time">completed</span>
+              <p class="task-desc">When the old MakeMKV build expired, rebuilt it from source on the media VM (now v2.0.0), and corrected the optical-drive device path after finding the VM exposes both an empty virtual DVD drive and the real passed-through one.</p>
+            </div>
           </div>
         </div>
 
@@ -234,6 +259,11 @@
               <span class="task-name">8. Confirm automatic security updates on the Proxmox host</span>
               <span class="task-time">~10 min</span>
               <p class="task-desc">VM 100 and CT 101 both have unattended-upgrades configured; the Proxmox host itself was never confirmed to have the same.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">9. Per-user content restrictions in Jellyfin</span>
+              <span class="task-time">~20-30 min</span>
+              <p class="task-desc">Hide a set of titles from one family account. Library-level access alone can't do it, because those titles live in a subfolder of the main Movies library and adding the subfolder as a second library risks the duplicate-path error fixed in September. Plan: tag the titles and block that tag under the user's parental controls, with a separate library as the heavier fallback.</p>
             </div>
           </div>
           <p class="tier1-summary" style="margin-top:14px;">Looking further ahead: Tier 3 now includes a network-wide DNS sinkhole and blocklist setup (Pi-hole or AdGuard Home) for ad/tracker blocking on every device, tightening the docs-to-site automation toward real-time instead of twice-daily, photo storage / file sync (moved here from Tier 2, bigger project than a quick task), lightweight monitoring/alerting for VM 100 and CT 101 (e.g. Uptime Kuma), expanding the library beyond movies into TV and music, a budget GPU for Jellyfin hardware transcoding, GPU passthrough for a Windows gaming VM, and eventual network segmentation (VLANs).</p>
