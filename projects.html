@@ -172,6 +172,11 @@
               <span class="task-time">completed</span>
               <p class="task-desc">A few pasted-command mishaps (a rip started by accident straight into the live library, one aimed at a folder that didn't exist yet, one blocked by root-owned permissions) led to a new routine: rip into a staging folder outside the Jellyfin library, check the file's size and duration with <code>ffprobe</code>, then move it into place and eject as separate steps, so a half-written file never shows up in the library. The same routine covers a two-sided DVD: rip each side separately, then append the halves with <code>mkvmerge</code>. Along the way I traced a wrong-title match in Jellyfin to the metadata database filing that title as a TV miniseries, which a movie library can't find. All written up as repeatable manual sections.</p>
             </div>
+            <div class="task task-done reveal">
+              <span class="task-name">&#10003; Joined a two-part disc without trusting the file size <em>&mdash; done Sep 12</em></span>
+              <span class="task-time">completed</span>
+              <p class="task-desc">A home-recorded DVD scanned as two titles (53 and 88 minutes). I played each on another computer to confirm they were two halves of one film, ripped both, and joined them with <code>mkvmerge</code>. The first join looked right (the same 2.2 GB) but <code>ffprobe</code> reported only the 88-minute half: without mkvmerge&rsquo;s append flag, the second file&rsquo;s tracks are stacked beside the first&rsquo;s instead of following them. Rerunning with the flag gave 2 hours 21 minutes, and the check went into the manual as duration, not size.</p>
+            </div>
             <div class="task reveal">
               <span class="task-name">Scripted TV seasons and multi-disc movies <em>&mdash; in progress, Sep 29 - Oct 2</em></span>
               <span class="task-time">in progress</span>
