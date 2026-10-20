@@ -149,7 +149,7 @@
         <div class="dash-section">
           <div class="dash-section-head">
             <p class="dash-section-title">Recent progress</p>
-            <p class="dash-section-note">Library growth, a second ripping path, a safer ripping routine, and some debugging worth keeping.</p>
+            <p class="dash-section-note">Library growth, a second ripping path, a safer ripping routine, TV seasons and multi-disc movies, and some debugging worth keeping.</p>
           </div>
           <div class="task-list">
             <div class="task task-done reveal">
@@ -171,6 +171,11 @@
               <span class="task-name">&#10003; Safer ripping routine: stage, verify, then publish <em>&mdash; done Oct 9</em></span>
               <span class="task-time">completed</span>
               <p class="task-desc">A few pasted-command mishaps (a rip started by accident straight into the live library, one aimed at a folder that didn't exist yet, one blocked by root-owned permissions) led to a new routine: rip into a staging folder outside the Jellyfin library, check the file's size and duration with <code>ffprobe</code>, then move it into place and eject as separate steps, so a half-written file never shows up in the library. The same routine covers a two-sided DVD: rip each side separately, then append the halves with <code>mkvmerge</code>. Along the way I traced a wrong-title match in Jellyfin to the metadata database filing that title as a TV miniseries, which a movie library can't find. All written up as repeatable manual sections.</p>
+            </div>
+            <div class="task reveal">
+              <span class="task-name">Scripted TV seasons and multi-disc movies <em>&mdash; in progress, Sep 29 - Oct 2</em></span>
+              <span class="task-time">in progress</span>
+              <p class="task-desc">Extended the ripping routine to discs that don't fit in one file. A small helper script rips each TV episode into its own temporary folder and renames it to the <code>Show - S01E01.mkv</code> layout Jellyfin expects; each disc's scan is checked for the &ldquo;Play All&rdquo; title (its length is the sum of two episodes) so episodes aren't duplicated. Game of Thrones season 1 episodes 1-4 are verified by duration so far, with the rest underway. Two-sided and two-disc movies are ripped part by part into a scratch folder outside the library, joined with mkvmerge&rsquo;s append mode and checked with <code>ffprobe</code> before anything touches the library; a nearly four-hour film joined in about two minutes. A damaged disc that kept returning unrecovered read errors was stopped and ejected rather than forced.</p>
             </div>
           </div>
         </div>
